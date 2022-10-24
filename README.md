@@ -14,6 +14,8 @@ waivers
 * https://www.adventures.tech/adventure-waivers
 * https://api.smartwaiver.com/docs/v4/
 * https://www.waiversign.com/
+* https://otterwaiver.com/
+* https://getwherewolf.com/
 
 
 ##### Signiture pad
