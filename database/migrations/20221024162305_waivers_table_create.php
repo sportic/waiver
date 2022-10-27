@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class WaiverTemplatesTableCreate extends AbstractMigration
+final class WaiversTableCreate extends AbstractMigration
 {
     /**
      * Change Method.
@@ -18,12 +18,12 @@ final class WaiverTemplatesTableCreate extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('spt_waiver_templates');
+        $table = $this->table('spt_waiver_waivers');
         $table
+            ->addColumn('template_id', 'integer',)
             ->addColumn('parent_id', 'integer',)
             ->addColumn('parent', 'string',)
-            ->addColumn('content_last_id', 'integer',)
-            ->addColumn('status', 'enum', ['values' => ['active'], 'default' => 'active'])
+            ->addColumn('content_id', 'integer',)
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',
@@ -31,28 +31,25 @@ final class WaiverTemplatesTableCreate extends AbstractMigration
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
             ])
+            ->addIndex(['template_id'])
             ->addIndex(['parent_id', 'parent'])
-            ->addIndex(['content_last_id'])
             ->addIndex(['status'])
             ->save();
-
-
         $table
             ->addForeignKey(
-                'content_last_id',
+                'template_id',
+                'spt_waiver_templates',
+                'id',
+                ['constraint' => 'spt_waiver_template_id', 'delete' => 'NO_ACTION', 'update' => 'NO_ACTION']
+            )
+            ->addForeignKey(
+                'content_id',
                 'spt_waiver_contents',
                 'id',
-                ['constraint' => 'spt_waiver_templates_content_last_id', 'delete' => 'NO_ACTION', 'update' => 'NO_ACTION']
+                ['constraint' => 'spt_waiver_content_id', 'delete' => 'NO_ACTION', 'update' => 'NO_ACTION']
             )
             ->save();
 
-        $table = $this->table('spt_waiver_contents');
-        $table->addForeignKey(
-            'template_id',
-            'spt_waiver_templates',
-            'id',
-            ['constraint' => 'spt_waiver_contents_template_id', 'delete' => 'NO_ACTION', 'update' => 'NO_ACTION']
-        )
-            ->save();
+
     }
 }
