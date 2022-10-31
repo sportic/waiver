@@ -5,7 +5,6 @@ namespace Sportic\Waiver\Base\Models\Behaviours\HasParentRecord;
 trait HasParentRepositoryTrait
 {
 
-
     protected function initRelationsWaiverParentRecord(): void
     {
         $this->morphTo(

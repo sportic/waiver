@@ -16,4 +16,5 @@ class WaiverTemplates extends RecordManager
 
     public const TABLE = 'spt_waiver_templates';
     public const CONTROLLER = 'spt_waiver_templates';
+    public const RELATION_CONTENT_LAST = 'ContentLast';
 }

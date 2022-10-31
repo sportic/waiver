@@ -4,7 +4,7 @@ namespace Sportic\Waiver\Contents\Models;
 
 use Sportic\Waiver\Base\Models\Behaviours\HasId\RecordHasId;
 use Sportic\Waiver\Base\Models\Behaviours\HasTemplate\HasTemplateRecordTrait;
-use Sportic\Waiver\Base\Models\Behaviours\Timestampable\TimestampableTrait;
+use \ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
 
 /**
  * Trait WaiverContentTrait
@@ -17,6 +17,15 @@ trait WaiverContentTrait
 
     protected ?string $body = null;
     protected ?int $version = null;
+    /**
+     * @var string
+     */
+    protected static $createTimestamps = ['created_at'];
+
+    /**
+     * @var string
+     */
+    protected static $updateTimestamps = [];
 
     /**
      * @return string

@@ -14,13 +14,5 @@ class WaiverContent extends Record
     use WaiverContentTrait;
     use CommonRecordTrait;
 
-    /**
-     * @var string
-     */
-    protected static $createTimestamps = ['created_at'];
 
-    /**
-     * @var string
-     */
-    protected static $updateTimestamps = [];
 }

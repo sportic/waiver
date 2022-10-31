@@ -30,7 +30,10 @@
     "bytic/orm": "^0.9|^1.0",
     "bytic/orm-filters": "^0.9|^1.0",
     "bytic/orm-behaviors": "^0.9|^1.0",
-    "bytic/translation": "^0.9|^1.0"
+    "bytic/translation": "^0.9|^1.0",
+    "bytic/controllers": "^0.9|^1.0",
+    "bytic/form": "^0.9|^1.0",
+    "bytic/view": "^0.9|^1.0"
   },
   "require-dev": {
     "bytic/phpqatools": "^1.0",

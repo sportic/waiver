@@ -33,7 +33,7 @@ final class WaiversTableCreate extends AbstractMigration
             ])
             ->addIndex(['template_id'])
             ->addIndex(['parent_id', 'parent'])
-            ->addIndex(['status'])
+            ->addIndex(['content_id'])
             ->save();
         $table
             ->addForeignKey(

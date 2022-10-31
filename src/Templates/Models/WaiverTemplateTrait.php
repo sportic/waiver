@@ -5,9 +5,12 @@ namespace Sportic\Waiver\Templates\Models;
 use Sportic\Waiver\Base\Models\Behaviours\HasId\RecordHasId;
 use Sportic\Waiver\Base\Models\Behaviours\HasParentRecord\HasParentRecordTrait;
 use Sportic\Waiver\Base\Models\Behaviours\Timestampable\TimestampableTrait;
+use Sportic\Waiver\Consents\Models\WaiverConsent;
 
 /**
  * Trait WaiverTemplateTrait
+ *
+ * @method WaiverConsent getContentLast
  */
 trait WaiverTemplateTrait
 {

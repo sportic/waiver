@@ -7,6 +7,9 @@ use Sportic\Waiver\Base\Models\Behaviours\Timestampable\TimestampableManagerTrai
 use Sportic\Waiver\Utility\WaiverModels;
 use Sportic\Waiver\Utility\PackageConfig;
 
+/**
+ * @method WaiverTemplate findOneByParams($params = [])
+ */
 trait WaiverTemplatesTrait
 {
     use HasParentRepositoryTrait;
@@ -15,6 +18,15 @@ trait WaiverTemplatesTrait
     protected function initRelationsWaiver(): void
     {
         $this->initRelationsWaiverParentRecord();
+        $this->initRelationsWaiverContentLast();
+    }
+
+    protected function initRelationsWaiverContentLast(): void
+    {
+        $this->belongsTo(
+            WaiverTemplates::RELATION_CONTENT_LAST,
+            ['fl' => 'content_last_id', 'with' => WaiverModels::contents()]
+        );
     }
 
     public function generatePrimaryFK()
