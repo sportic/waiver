@@ -25,7 +25,7 @@ trait WaiverTemplatesTrait
     {
         $this->belongsTo(
             WaiverTemplates::RELATION_CONTENT_LAST,
-            ['fl' => 'content_last_id', 'with' => WaiverModels::contents()]
+            ['fk' => 'content_last_id', 'with' => WaiverModels::contents()]
         );
     }
 

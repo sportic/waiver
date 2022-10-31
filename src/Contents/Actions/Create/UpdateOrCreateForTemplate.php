@@ -5,7 +5,7 @@ namespace Sportic\Waiver\Contents\Actions\Create;
 
 use Sportic\Waiver\Contents\Actions\Behaviours\HasRepository;
 use Sportic\Waiver\Contents\Actions\Find\FindWaiverContentByHash;
-use Sportic\Waiver\Contents\Actions\Find\FindWaiverContentLastByTemplate;
+use Sportic\Waiver\Contents\Actions\Find\FindWaiverContentLastVersion;
 use Sportic\Waiver\Templates\Models\WaiverTemplate;
 use Sportic\Waiver\Utility\Hashing;
 
@@ -17,19 +17,13 @@ class UpdateOrCreateForTemplate
 
     protected string $body;
 
-    /**
-     * @param $template
-     * @param $body
-     */
-    public function __construct($template, $body)
-    {
-        $this->template = $template;
-        $this->body = $body;
-    }
 
     public static function for(WaiverTemplate $template, string $body)
     {
-        return new self($template, $body);
+        $action = new self();
+        $action->template = $template;
+        $action->body = $body;
+        return $action;
     }
 
     public function save()
@@ -43,7 +37,7 @@ class UpdateOrCreateForTemplate
             $this->updateTemplateLastContent($recordFound);
             return $recordFound;
         }
-        $lastVersion = FindWaiverContentLastByTemplate::for($this->template)->fetch();
+        $lastVersion = FindWaiverContentLastVersion::for($this->template)->fetch();
         $data['version'] = $lastVersion ? $lastVersion->getVersion() + 1 : 1;
         $record = $this->createRecord($data);
         $this->updateTemplateLastContent($record);

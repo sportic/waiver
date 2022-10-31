@@ -18,8 +18,8 @@ class BasicForm extends AbstractForm
     public function saveModel()
     {
         UpdateOrCreateForTemplate::for(
-            $this->getModel()->getTemplate(),
+            $this->getModel()->getWaiverTemplate(),
             $this->getElement('body')->getValue('model')
-        );
+        )->save();
     }
 }
