@@ -2,7 +2,6 @@
 
 namespace Sportic\Waiver\Contents\Models;
 
-use Sportic\Waiver\Base\Models\Behaviours\HasParentRecord\HasParentRepositoryTrait;
 use Sportic\Waiver\Base\Models\Behaviours\HasTemplate\HasTemplateRepositoryTrait;
 use Sportic\Waiver\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Sportic\Waiver\Bundle\Forms\Admin\Contents\BasicForm;

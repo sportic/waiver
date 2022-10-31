@@ -2,6 +2,7 @@
 
 namespace Sportic\Waiver\Bundle\Controllers\Admin;
 
+use Sportic\Waiver\Contents\Actions\Find\FindWaiverContentLastByTemplate;
 use Sportic\Waiver\Templates\Actions\Find\FindTemplateByParent;
 use Sportic\Waiver\Utility\WaiverModels;
 
@@ -15,8 +16,11 @@ trait SptWaiverTemplatesControllerTrait
             ->orCreate()
             ->fetch();
 
-        $lastContent = $template->getContentLast();
-        $form = $template->getForm('Admin/BasicForm');
+        $lastContent = FindWaiverContentLastByTemplate::for($template)
+            ->orEmpty()
+            ->fetch();
+        $form = $lastContent->getForm('Admin/BasicForm');
+
         if ($form->execute()) {
             $this->flashRedirect(
                 WaiverModels::contents()->getMessage('update'),

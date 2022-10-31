@@ -13,6 +13,4 @@ class WaiverContent extends Record
 {
     use WaiverContentTrait;
     use CommonRecordTrait;
-
-
 }

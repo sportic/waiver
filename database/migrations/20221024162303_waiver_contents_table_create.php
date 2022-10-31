@@ -27,7 +27,7 @@ final class WaiverContentsTableCreate extends AbstractMigration
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
             ])
-            ->addIndex(['hash'], ['unique' => true])
+            ->addIndex(['hash','template_id'], ['unique' => true])
             ->addIndex(['template_id'])
             ->addIndex(['created_at'])
             ->save();

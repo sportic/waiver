@@ -11,8 +11,9 @@ use Nip\Records\RecordManager;
  */
 class WaiverContents extends RecordManager
 {
-    use WaiverContentsTrait;
-    use CommonRecordsTrait;
+    use WaiverContentsTrait, CommonRecordsTrait {
+        WaiverContentsTrait::getFormClassName insteadof CommonRecordsTrait;
+    }
 
     public const TABLE = 'spt_waiver_contents';
     public const CONTROLLER = 'spt_waiver_contents';

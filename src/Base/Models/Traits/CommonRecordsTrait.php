@@ -16,7 +16,7 @@ trait CommonRecordsTrait
     use HasFormsRecordsTrait;
     use HasFiltersRecordsTrait;
 
-    protected function initRelations()
+    protected function initRelations(): void
     {
         parent::initRelations();
         $this->initRelationsWaiver();
@@ -25,12 +25,12 @@ trait CommonRecordsTrait
     /**
      * @return string
      */
-    public function getTranslateRoot()
+    public function getTranslateRoot(): string
     {
         return $this->getController();
     }
 
-    public function getRootNamespace()
+    public function getRootNamespace(): string
     {
         return 'Sportic\Waiver\Models\\';
     }

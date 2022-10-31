@@ -11,7 +11,7 @@ use Sportic\Waiver\Utility\WaiverModels;
 use Sportic\Waiver\Waivers\Models\Waivers;
 
 return [
-    'models' => array(
+    'models' => [
         WaiverModels::TEMPLATES => WaiverTemplates::class,
         WaiverModels::CONTENTS => WaiverContents::class,
         WaiverModels::WAIVERS => Waivers::class,
@@ -21,7 +21,7 @@ return [
         WaiverModels::PERSONS => WaiverPersons::class,
         WaiverModels::SIGNATURES => WaiverSignatures::class,
 
-    ),
+    ],
     'tables' => [
         WaiverModels::TEMPLATES => WaiverTemplates::TABLE,
         WaiverModels::CONTENTS => WaiverContents::TABLE,
