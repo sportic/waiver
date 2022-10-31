@@ -31,7 +31,7 @@ class FindWaiverContentLastVersion
             'where' => [
                 ['template_id = ?', $this->template->id],
             ],
-            'order' => ['version', 'desc']
+            'order' => [['version', 'desc']]
         ]);
     }
 
