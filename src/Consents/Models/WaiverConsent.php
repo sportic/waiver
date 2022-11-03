@@ -14,13 +14,5 @@ class WaiverConsent extends Record
     use WaiverConsentTrait;
     use CommonRecordTrait;
 
-    /**
-     * @var string
-     */
-    protected static $createTimestamps = ['given_at'];
 
-    /**
-     * @var string
-     */
-    protected static $updateTimestamps = [];
 }

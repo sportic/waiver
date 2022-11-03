@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class WaiversTableCreate extends AbstractMigration
+final class WaiversConsentsTableCreate extends AbstractMigration
 {
     /**
      * Change Method.
@@ -22,10 +22,10 @@ final class WaiversTableCreate extends AbstractMigration
         $table
             ->addColumn('waiver_id', 'integer',)
             ->addColumn('content_id', 'integer',)
-            ->addColumn('geolocation_id', 'integer',)
-            ->addColumn('device_id', 'integer',)
-            ->addColumn('signature_id', 'integer',)
-            ->addColumn('person_id', 'integer',)
+            ->addColumn('geolocation_id', 'integer', ['null' => true])
+            ->addColumn('device_id', 'integer', ['null' => true])
+            ->addColumn('signature_id', 'integer', ['null' => true])
+            ->addColumn('person_id', 'integer', ['null' => true])
             ->addColumn('type', 'enum', ['values' => ['checkbox', 'signed']])
             ->addColumn('given_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',

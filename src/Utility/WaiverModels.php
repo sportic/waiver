@@ -57,7 +57,7 @@ class WaiverModels extends ModelFinder
      */
     public static function consents()
     {
-        return static::getModels(self::CONSENTS, WaiverContents::class);
+        return static::getModels(self::CONSENTS, WaiverConsents::class);
     }
     /**
      * @return WaiverDevices

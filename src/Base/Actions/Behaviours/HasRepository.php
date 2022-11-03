@@ -14,7 +14,7 @@ trait HasRepository
      */
     public function __construct($repository = null)
     {
-        $this->initRepository();
+        $this->initRepository($repository);
     }
 
     protected function initRepository($repository = null): void

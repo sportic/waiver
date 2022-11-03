@@ -16,17 +16,10 @@ class FindOrCreateWaiver
     protected string $parent;
     protected int $parent_id;
 
-    /**
-     * @param WaiverTemplate $template
-     */
-    public function __construct(WaiverTemplate $template)
-    {
-        $this->template = $template;
-    }
-
     public static function for(WaiverTemplate $template, string|Record $parent, int $parent_id = null): static
     {
-        $instance = new static($template);
+        $instance = new static();
+        $instance->template = $template;
 
         if (is_object($parent)) {
             $parent_id = $parent->id;

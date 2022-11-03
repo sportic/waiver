@@ -5,7 +5,7 @@ namespace Sportic\Waiver\Consents\Models\Types;
 /**
  *
  */
-class Signed extends AbstractType
+class SignedConsent extends AbstractType
 {
     public const NAME = 'signed';
 }

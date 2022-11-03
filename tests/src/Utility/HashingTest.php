@@ -13,6 +13,20 @@ class HashingTest extends AbstractTest
      * @param $expected
      * @return void
      */
+    public function test_forArray(): void
+    {
+        self::assertSame(
+            'e9696fd3',
+            Hashing::forArray(['a' => 'b'])
+        );
+    }
+
+    /**
+     * @dataProvider data_forString
+     * @param $string
+     * @param $expected
+     * @return void
+     */
     public function test_forString($string, $expected): void
     {
         self::assertSame($expected, Hashing::forString($string));

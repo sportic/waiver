@@ -14,6 +14,16 @@ trait WaiverConsentTrait
 {
     use RecordHasId;
     use HasTemplateRecordTrait;
-    use TimestampableTrait;
+    use \ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
     use HasTypesRecordTrait;
+
+    /**
+     * @var string
+     */
+    protected static $createTimestamps = ['given_at'];
+
+    /**
+     * @var string
+     */
+    protected static $updateTimestamps = [];
 }

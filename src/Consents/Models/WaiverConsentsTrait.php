@@ -15,6 +15,7 @@ trait WaiverConsentsTrait
     use HasTemplateRepositoryTrait;
     use TimestampableManagerTrait;
     use HasParentRepositoryTrait;
+    use HasTypesRecordsTrait;
 
     protected function initRelationsWaiver(): void
     {
@@ -24,5 +25,21 @@ trait WaiverConsentsTrait
     protected function generateTable(): string
     {
         return PackageConfig::tableName(WaiverModels::CONSENTS, WaiverConsents::TABLE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getTypesDirectory()
+    {
+        return dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Types';
+    }
+
+    /**
+     * @return string
+     */
+    public function getTypeNamespace()
+    {
+        return '\Sportic\Waiver\Consents\Models\Types\\';
     }
 }
