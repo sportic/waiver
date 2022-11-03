@@ -1,27 +1,33 @@
 <?php
 
-namespace Sportic\Waiver\Templates\Actions\Find;
+namespace Sportic\Waiver\Waivers\Actions;
 
 use Nip\Records\Record;
 use Sportic\Waiver\Base\Actions\Behaviours\HasDefaultReturn;
-use Sportic\Waiver\Templates\Actions\Behaviours\HasRepository;
 use Sportic\Waiver\Templates\Models\WaiverTemplate;
-use Sportic\Waiver\Templates\Models\WaiverTemplates;
+use Sportic\Waiver\Waivers\Models\Waiver;
 
-/**
- * @property WaiverTemplates $repository
- */
-class FindTemplateByParent
+class FindOrCreateWaiver
 {
-    use HasRepository;
+    use Behaviours\HasRepository;
     use HasDefaultReturn;
 
+    protected WaiverTemplate $template;
     protected string $parent;
     protected int $parent_id;
 
-    public static function for(string|Record $parent, int $parent_id = null): static
+    /**
+     * @param WaiverTemplate $template
+     */
+    public function __construct(WaiverTemplate $template)
     {
-        $instance = new static();
+        $this->template = $template;
+    }
+
+    public static function for(WaiverTemplate $template, string|Record $parent, int $parent_id = null): static
+    {
+        $instance = new static($template);
+
         if (is_object($parent)) {
             $parent_id = $parent->id;
             $parent = $parent->getManager()->getMorphName();
@@ -31,12 +37,13 @@ class FindTemplateByParent
         return $instance;
     }
 
-    public function fetch(): WaiverTemplate|null
+    public function fetch(): Waiver|null
     {
         $params = $this->findParams();
         $found = $this->repository->findOneByParams($params);
         return $found ?: $this->getDefault();
     }
+
 
     /**
      * @param array $data
@@ -45,7 +52,7 @@ class FindTemplateByParent
     public function orCreate(array $data = []): self
     {
         $this->orReturn(function () use ($data) {
-            $data = $this->createTemplateData($data);
+            $data = $this->createRecordData($data);
             $record = $this->repository->getNewRecord($data);
             $record->saveRecord();
             return $record;
@@ -61,6 +68,7 @@ class FindTemplateByParent
     {
         return [
             'where' => [
+                ['template_id = ?' => $this->template->id],
                 ['parent = ?', $this->parent],
                 ['parent_id = ?', $this->parent_id],
             ]
@@ -71,12 +79,12 @@ class FindTemplateByParent
      * @param array $data
      * @return array
      */
-    protected function createTemplateData(array $data = []): array
+    protected function createRecordData(array $data = []): array
     {
         return array_merge($data, [
+            'template_id' => $this->template->id,
             'parent' => $this->parent,
             'parent_id' => $this->parent_id,
-            'status' => 'active'
         ]);
     }
 }
