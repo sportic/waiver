@@ -3,29 +3,37 @@
 
 namespace Sportic\Waiver\Devices\Actions\Create;
 
+use Nip\Utility\Arr;
 use Sportic\Waiver\Devices\Actions\Behaviours\HasRepository;
 use Sportic\Waiver\Devices\Actions\Find\FindDeviceByHash;
 use Sportic\Waiver\Utility\Hashing;
 use Symfony\Component\HttpFoundation\Request;
 
-class FindOrCreateFromRequest
+class FindOrCreateDevice
 {
     use HasRepository;
 
-    protected Request $request;
+    protected array $data;
 
-
-    public static function for(Request $template)
+    public static function fromData($data): static
     {
         $action = new self();
-        $action->request = $template;
+        $action->data = $data;
         return $action;
+    }
+
+    public static function fromRequest(Request $request): static
+    {
+        return self::fromData([
+            'ip' => $request->getClientIp(),
+            'user_agent' => $request->headers->get('User-Agent'),
+        ]);
     }
 
     public function save()
     {
-        $data = $this->generateData();
-        $data['hash'] = Hashing::forString($data['user_agent']);
+        $data = $this->data;
+        $data['hash'] = Hashing::forString(Arr::only($this->data, ['ip', 'user_agent']));
 
         $recordFound = FindDeviceByHash::with($data['hash'], $this->repository);
         if ($recordFound) {
@@ -34,11 +42,4 @@ class FindOrCreateFromRequest
         return $this->createRecord($data);
     }
 
-    protected function generateData(): array
-    {
-        return [
-            'ip' => $this->request->getClientIp(),
-            'user_agent' => $this->request->headers->get('User-Agent'),
-        ];
-    }
 }

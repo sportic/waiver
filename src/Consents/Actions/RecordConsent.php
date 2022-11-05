@@ -4,7 +4,7 @@ namespace Sportic\Waiver\Consents\Actions;
 
 use Sportic\Waiver\Consents\Models\WaiverConsent;
 use Sportic\Waiver\Contents\Models\WaiverContent;
-use Sportic\Waiver\Devices\Actions\Create\FindOrCreateFromRequest;
+use Sportic\Waiver\Devices\Actions\Create\FindOrCreateDevice;
 use Sportic\Waiver\Waivers\Models\Waiver;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -67,7 +67,8 @@ class RecordConsent
         if (false === $this->hasRequest()) {
             return;
         }
-        $device = FindOrCreateFromRequest::for($this->request)->save();
+        $device = FindOrCreateDevice::fromRequest($this->request)
+            ->save();
         $data['device_id'] = $device->id;
     }
 

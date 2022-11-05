@@ -8,7 +8,7 @@ use Sportic\Waiver\Contents\Actions\Find\FindWaiverContentLastVersion;
 use Sportic\Waiver\Templates\Models\WaiverTemplate;
 use Sportic\Waiver\Utility\Hashing;
 
-class UpdateOrCreateFromData
+class FindOrCreateFromData
 {
     use HasRepository;
 
