@@ -10,23 +10,19 @@ use Sportic\Waiver\Waivers\Models\Waiver;
 class FindOrCreateWaiver
 {
     use Behaviours\HasRepository;
+    use Behaviours\HasParent;
     use HasDefaultReturn;
 
     protected WaiverTemplate $template;
-    protected string $parent;
-    protected int $parent_id;
+
 
     public static function for(WaiverTemplate $template, string|Record $parent, int $parent_id = null): static
     {
         $instance = new static();
         $instance->template = $template;
 
-        if (is_object($parent)) {
-            $parent_id = $parent->id;
-            $parent = $parent->getManager()->getMorphName();
-        }
-        $instance->parent = $parent;
-        $instance->parent_id = $parent_id;
+        $instance->populateParent($parent, $parent_id);
+
         return $instance;
     }
 

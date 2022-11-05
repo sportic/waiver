@@ -18,11 +18,17 @@ final class WaiversDevicesTableCreate extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('spt_waiver_devices');
+        $table = $this->table('spt_waiver_persons');
         $table
             ->addColumn('hash', 'string', ['limit' => 15])
-            ->addColumn('ip', 'string', ['limit' => 45])
-            ->addColumn('user_agent', 'text')
+            ->addColumn('first_name', 'string', ['limit' => 100])
+            ->addColumn('last_name', 'string', ['limit' => 100])
+            ->addColumn('email', 'string', ['limit' => 100])
+            ->addColumn('dob', 'date')
+            ->addColumn('updated_at', 'timestamp', [
+                'default' => 'CURRENT_TIMESTAMP',
+                'update' => 'CURRENT_TIMESTAMP',
+            ])
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
             ])

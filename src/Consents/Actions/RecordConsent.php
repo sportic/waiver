@@ -2,6 +2,7 @@
 
 namespace Sportic\Waiver\Consents\Actions;
 
+use Sportic\Waiver\Consents\Models\WaiverConsent;
 use Sportic\Waiver\Contents\Models\WaiverContent;
 use Sportic\Waiver\Devices\Actions\Create\FindOrCreateFromRequest;
 use Sportic\Waiver\Waivers\Models\Waiver;
@@ -51,11 +52,11 @@ class RecordConsent
         return $record;
     }
 
-    protected function createRecord($data = []): WaiverContent
+    protected function createRecord($data = []): WaiverConsent
     {
         $data = $this->createRecordData($data);
 
-        /** @var WaiverContent $record */
+        /** @var WaiverConsent $record */
         $record = $this->repository->getNewRecord($data);
         $record->saveRecord();
         return $record;

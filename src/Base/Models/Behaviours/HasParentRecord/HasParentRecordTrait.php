@@ -6,6 +6,7 @@ use Nip\Records\Record;
 
 /**
  * @method Record getNewsletterOwner()
+ * @method Record getParentRecord()
  */
 trait HasParentRecordTrait
 {
