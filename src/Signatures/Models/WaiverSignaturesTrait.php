@@ -17,4 +17,20 @@ trait WaiverSignaturesTrait
     {
         return PackageConfig::tableName(WaiverModels::SIGNATURES, WaiverSignatures::TABLE);
     }
+
+    /**
+     * @return string
+     */
+    public function getTypesDirectory()
+    {
+        return dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Types';
+    }
+
+    /**
+     * @return string
+     */
+    public function getTypeNamespace()
+    {
+        return '\Sportic\Waiver\Signatures\Models\Types\\';
+    }
 }

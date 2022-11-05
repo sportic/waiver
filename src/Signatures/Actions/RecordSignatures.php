@@ -12,7 +12,7 @@ class RecordSignatures
     protected ?string $type = null;
     protected ?string $signature = null;
 
-    public function typed(string $signature): static
+    public static function typed(string $signature): static
     {
         return self::with($signature, TypedSignature::NAME);
     }
