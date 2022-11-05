@@ -33,7 +33,7 @@ class FindOrCreateDevice
     public function save()
     {
         $data = $this->data;
-        $data['hash'] = Hashing::forString(Arr::only($this->data, ['ip', 'user_agent']));
+        $data['hash'] = Hashing::forArray(Arr::only($this->data, ['ip', 'user_agent']));
 
         $recordFound = FindDeviceByHash::with($data['hash'], $this->repository);
         if ($recordFound) {

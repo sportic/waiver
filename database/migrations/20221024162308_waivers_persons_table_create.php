@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class WaiversDevicesTableCreate extends AbstractMigration
+final class WaiversPersonsTableCreate extends AbstractMigration
 {
     /**
      * Change Method.

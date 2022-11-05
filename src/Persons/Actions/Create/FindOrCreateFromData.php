@@ -2,10 +2,7 @@
 
 namespace Sportic\Waiver\Persons\Actions\Create;
 
-use Sportic\Waiver\Contents\Actions\Behaviours\HasRepository;
-use Sportic\Waiver\Contents\Actions\Find\FindWaiverContentByHash;
-use Sportic\Waiver\Contents\Actions\Find\FindWaiverContentLastVersion;
-use Sportic\Waiver\Templates\Models\WaiverTemplate;
+use Sportic\Waiver\Persons\Actions\Behaviours\HasRepository;
 use Sportic\Waiver\Utility\Hashing;
 
 class FindOrCreateFromData
@@ -28,13 +25,13 @@ class FindOrCreateFromData
 
     public function save()
     {
-        $hash = Hashing::forArray($this->data);
+        $data = $this->data;
+        $data['hash'] = Hashing::forArray($this->data);
 
-        $recordFound = $this->repository->findByField('hash', $hash);
+        $recordFound = $this->repository->findOneByField('hash', $data['hash']);
         if ($recordFound) {
             return $recordFound;
         }
-        $data['hash'] = $hash;
         return $this->createRecord($data);
     }
 }
