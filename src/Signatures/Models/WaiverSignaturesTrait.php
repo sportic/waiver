@@ -6,10 +6,12 @@ use Sportic\Waiver\Base\Models\Behaviours\Timestampable\TimestampableManagerTrai
 use Sportic\Waiver\Utility\WaiverModels;
 use Sportic\Waiver\Utility\PackageConfig;
 
+use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordsTrait as HasTypesRecordsTrait;
+
 trait WaiverSignaturesTrait
 {
     use TimestampableManagerTrait;
-
+    use HasTypesRecordsTrait;
 
     protected function generateTable(): string
     {

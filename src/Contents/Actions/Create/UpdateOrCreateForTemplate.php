@@ -22,7 +22,7 @@ class UpdateOrCreateForTemplate
     {
         $action = new self();
         $action->template = $template;
-        $action->body = $body;
+        $action->body = trim($body);
         return $action;
     }
 

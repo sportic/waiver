@@ -28,7 +28,11 @@ class FindOrCreateFromData
         $data = $this->data;
         $data['hash'] = Hashing::forArray($this->data);
 
-        $recordFound = $this->repository->findOneByField('hash', $data['hash']);
+        $recordFound = $this->repository->findOneByParams([
+            'where' => [
+                ['hash = ?', $data['hash']],
+            ],
+        ]);
         if ($recordFound) {
             return $recordFound;
         }
