@@ -2,6 +2,7 @@
 
 namespace Sportic\Waiver\Bundle\Controllers\Admin;
 
+use Nip\Records\Collections\Collection;
 use Nip\Records\Record;
 use Sportic\Waiver\Templates\Actions\Find\FindTemplatesByParent;
 use Sportic\Waiver\Utility\WaiverModels;
@@ -33,6 +34,15 @@ trait SptWaiverWaiversControllerTrait
             TemplateFilter::encodeValue($parent, $parent_id)
         );
         $this->doModelsListing();
+    }
+
+    /**
+     * @param Collection $items
+     */
+    protected function indexPrepareItems($items)
+    {
+        parent::indexPrepareItems($items);
+        $items->loadRelation('WaiverConsents');
     }
 
     protected function generateModelName()

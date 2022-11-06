@@ -7,7 +7,10 @@ use Sportic\Waiver\Waivers\Models\Waiver;
 
 /** @var Waiver $item */
 $subject = $item->getParentRecord();
-$subjectParent = $subject instanceof WaiverSubjectInterface::class ? $subject->getWaiverGroup() : null;
+$subjectParent = $subject instanceof WaiverSubjectInterface ? $subject->getWaiverGroup() : null;
+
+/** @var WaiverConsent[] $consents */
+$consents = $item->getWaiverConsents();
 ?>
 <tr>
     <td>
@@ -24,6 +27,11 @@ $subjectParent = $subject instanceof WaiverSubjectInterface::class ? $subject->g
         <a href="<?= $subject->getURL(); ?>">
             <?= $subject->getName(); ?>
         </a>
+    </td>
+    <td>
+        <?php foreach ($consents as $consent) : ?>
+            <?= $consent->getType()->getLabelHTML(); ?>
+        <?php endforeach; ?>
     </td>
     <td>
         <small>

@@ -6,6 +6,9 @@
     <th>
         <?= WaiverModels::waivers()->getLabel('subject.singular'); ?>
     </th>
+        <th>
+        <?= WaiverModels::consents()->getLabel('title'); ?>
+    </th>
     <th>
         <?= translator()->trans('date'); ?>
     </th>

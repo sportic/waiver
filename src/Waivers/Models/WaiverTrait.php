@@ -9,6 +9,8 @@ use Sportic\Waiver\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 
 /**
  * Trait WaiverTrait
+ *
+ * @method \Sportic\Waiver\Consents\Models\WaiverConsent[] getWaiverConsents()
  */
 trait WaiverTrait
 {
