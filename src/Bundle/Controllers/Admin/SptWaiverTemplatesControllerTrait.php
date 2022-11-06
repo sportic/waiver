@@ -4,7 +4,7 @@ namespace Sportic\Waiver\Bundle\Controllers\Admin;
 
 use Sportic\Waiver\Contents\Actions\Find\FindWaiverContentLastByTemplate;
 use Sportic\Waiver\Contents\Actions\Find\FindWaiverContentLastVersion;
-use Sportic\Waiver\Templates\Actions\Find\FindTemplateByParent;
+use Sportic\Waiver\Templates\Actions\Find\FindTemplatesByParent;
 use Sportic\Waiver\Utility\WaiverModels;
 
 trait SptWaiverTemplatesControllerTrait
@@ -13,7 +13,7 @@ trait SptWaiverTemplatesControllerTrait
 
     protected function viewForParent($parent, $parent_id)
     {
-        $template = FindTemplateByParent::for($parent, $parent_id)
+        $template = FindTemplatesByParent::for($parent, $parent_id)
             ->orCreate()
             ->fetch();
 

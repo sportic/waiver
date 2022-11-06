@@ -7,6 +7,7 @@ use Sportic\Waiver\Base\Models\Behaviours\HasTemplate\HasTemplateRepositoryTrait
 use Sportic\Waiver\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Sportic\Waiver\Utility\WaiverModels;
 use Sportic\Waiver\Utility\PackageConfig;
+use Sportic\Waiver\Waivers\Models\Filters\FilterManager;
 
 trait WaiversTrait
 {
@@ -23,6 +24,14 @@ trait WaiversTrait
     public function generatePrimaryFK()
     {
         return 'waiver_id';
+    }
+
+    /** @noinspection PhpMissingParentCallCommonInspection
+     * @return string
+     */
+    protected function generateFilterManagerClass()
+    {
+        return FilterManager::class;
     }
 
     protected function generateTable(): string

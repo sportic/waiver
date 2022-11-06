@@ -18,7 +18,7 @@ final class WaiversPersonsTableCreate extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('spt_waiver_persons');
+        $table = $this->table('spt_waiver_signers');
         $table
             ->addColumn('hash', 'string', ['limit' => 15])
             ->addColumn('first_name', 'string', ['limit' => 100])

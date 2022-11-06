@@ -2,6 +2,7 @@
 
 namespace Sportic\Waiver\Templates\Actions\Find;
 
+use Nip\Records\Collections\Collection;
 use Nip\Records\Record;
 use Sportic\Waiver\Base\Actions\Behaviours\HasDefaultReturn;
 use Sportic\Waiver\Templates\Actions\Behaviours\HasRepository;
@@ -11,7 +12,7 @@ use Sportic\Waiver\Templates\Models\WaiverTemplates;
 /**
  * @property WaiverTemplates $repository
  */
-class FindTemplateByParent
+class FindTemplatesByParent
 {
     use HasRepository;
     use HasDefaultReturn;
@@ -36,6 +37,22 @@ class FindTemplateByParent
         $params = $this->findParams();
         $found = $this->repository->findOneByParams($params);
         return $found ?: $this->getDefault();
+    }
+
+    public function fetchAll(): Collection|null
+    {
+        $params = $this->findParams();
+        $found = $this->repository->findByParams($params);
+        if ($found->count() > 0) {
+            return $found;
+        }
+        $default = $this->getDefault();
+        if ($default instanceof WaiverTemplate) {
+            $collection = $this->repository->getNewCollection();
+            $collection->add($default);
+            return $collection;
+        }
+        return null;
     }
 
     /**

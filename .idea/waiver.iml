@@ -187,6 +187,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/ezyang/htmlpurifier" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/models-smart-properties" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/workflow" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/controllers-extra" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
