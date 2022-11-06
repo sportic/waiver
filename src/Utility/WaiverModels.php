@@ -8,8 +8,8 @@ use Sportic\Waiver\Contents\Models\WaiverContents;
 use Nip\Records\RecordManager;
 use Sportic\Waiver\Devices\Models\WaiverDevices;
 use Sportic\Waiver\Geolocations\Models\WaiverGeolocations;
-use Sportic\Waiver\Persons\Models\WaiverPersons;
 use Sportic\Waiver\Signatures\Models\WaiverSignatures;
+use Sportic\Waiver\Signers\Models\WaiverSigners;
 use Sportic\Waiver\Templates\Models\WaiverTemplates;
 use Sportic\Waiver\Waivers\Models\Waivers;
 use Sportic\Waiver\WaiverServiceProvider;
@@ -26,7 +26,7 @@ class WaiverModels extends ModelFinder
     public const CONSENTS = 'consents';
     public const DEVICES = 'devices';
     public const GEOLOCATIONS = 'geolocations';
-    public const PERSONS = 'persons';
+    public const SIGNERS = 'signers';
     public const SIGNATURES = 'signatures';
 
     /**
@@ -76,11 +76,11 @@ class WaiverModels extends ModelFinder
     }
 
     /**
-     * @return WaiverPersons
+     * @return WaiverSigners
      */
-    public static function persons()
+    public static function signers()
     {
-        return static::getModels(self::PERSONS, WaiverPersons::class);
+        return static::getModels(self::SIGNERS, WaiverSigners::class);
     }
 
     /**

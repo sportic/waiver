@@ -1,8 +1,8 @@
 <?php
 
-namespace Sportic\Waiver\Persons\Actions\Create;
+namespace Sportic\Waiver\Signers\Actions\Create;
 
-use Sportic\Waiver\Persons\Actions\Behaviours\HasRepository;
+use Sportic\Waiver\Signers\Actions\Behaviours\HasRepository;
 use Sportic\Waiver\Utility\Hashing;
 
 class FindOrCreateFromData

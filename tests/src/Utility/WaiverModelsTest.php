@@ -7,7 +7,7 @@ use Sportic\Waiver\Consents\Models\WaiverConsents;
 use Sportic\Waiver\Contents\Models\WaiverContents;
 use Sportic\Waiver\Devices\Models\WaiverDevices;
 use Sportic\Waiver\Geolocations\Models\WaiverGeolocations;
-use Sportic\Waiver\Persons\Models\WaiverPersons;
+use Sportic\Waiver\Signers\Models\WaiverSigners;
 use Sportic\Waiver\Signatures\Models\WaiverSignatures;
 use Sportic\Waiver\Templates\Models\WaiverTemplates;
 use Sportic\Waiver\Tests\AbstractTest;
@@ -42,7 +42,7 @@ class WaiverModelsTest extends AbstractTest
             [WaiverModels::CONSENTS, WaiverConsents::class, WaiverConsents::TABLE],
             [WaiverModels::DEVICES, WaiverDevices::class, WaiverDevices::TABLE],
             [WaiverModels::GEOLOCATIONS, WaiverGeolocations::class, WaiverGeolocations::TABLE],
-            [WaiverModels::PERSONS, WaiverPersons::class, WaiverPersons::TABLE],
+            [WaiverModels::SIGNERS, WaiverSigners::class, WaiverSigners::TABLE],
             [WaiverModels::SIGNATURES, WaiverSignatures::class, WaiverSignatures::TABLE],
         ];
     }

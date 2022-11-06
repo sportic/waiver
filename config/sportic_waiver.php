@@ -4,7 +4,7 @@ use Sportic\Waiver\Consents\Models\WaiverConsents;
 use Sportic\Waiver\Contents\Models\WaiverContents;
 use Sportic\Waiver\Devices\Models\WaiverDevices;
 use Sportic\Waiver\Geolocations\Models\WaiverGeolocations;
-use Sportic\Waiver\Persons\Models\WaiverPersons;
+use Sportic\Waiver\Signers\Models\WaiverSigners;
 use Sportic\Waiver\Signatures\Models\WaiverSignatures;
 use Sportic\Waiver\Templates\Models\WaiverTemplates;
 use Sportic\Waiver\Utility\WaiverModels;
@@ -18,7 +18,7 @@ return [
         WaiverModels::CONSENTS => WaiverConsents::class,
         WaiverModels::DEVICES => WaiverDevices::class,
         WaiverModels::GEOLOCATIONS => WaiverGeolocations::class,
-        WaiverModels::PERSONS => WaiverPersons::class,
+        WaiverModels::SIGNERS => WaiverSigners::class,
         WaiverModels::SIGNATURES => WaiverSignatures::class,
 
     ],
@@ -29,7 +29,7 @@ return [
         WaiverModels::CONSENTS => WaiverConsents::TABLE,
         WaiverModels::DEVICES => WaiverDevices::TABLE,
         WaiverModels::GEOLOCATIONS => WaiverGeolocations::TABLE,
-        WaiverModels::PERSONS => WaiverPersons::TABLE,
+        WaiverModels::SIGNERS => WaiverSigners::TABLE,
         WaiverModels::SIGNATURES => WaiverSignatures::TABLE,
     ],
     'database' => [
