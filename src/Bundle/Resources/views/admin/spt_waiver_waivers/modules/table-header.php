@@ -1,15 +1,17 @@
 <?php
-
-use KM42\Register\Models\Competitors\Competitors;
-
+ use Sportic\Waiver\Utility\WaiverModels;
 ?>
 <thead>
 <tr>
-    <th><?php echo Races::instance()->getLabel('title.singular'); ?></th>
-    <th><?php echo Race_Categories::instance()->getLabel('title.singular'); ?></th>
-    <th><?php echo Race_Entries::instance()->getLabel('title.singular'); ?></th>
-    <th><?php echo Competitors::instance()->getLabel('title.singular'); ?></th>
-    <th><?php echo 'signed' ?></th>
-    <th><?php echo 'link' ?></th>
+    <th>
+        <?= WaiverModels::waivers()->getLabel('subject.singular'); ?>
+    </th>
+    <th>
+        <?= WaiverModels::signatures()->getLabel('title.singular'); ?>
+    </th>
+    <th>
+        <?= translator()->trans('date'); ?>
+    </th>
+    <th></th>
 </tr>
 </thead>

@@ -188,6 +188,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/models-smart-properties" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/workflow" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/controllers-extra" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bytic/icons" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/iconify/json" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
