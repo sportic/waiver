@@ -7,7 +7,7 @@ use Sportic\Waiver\SubjectGroups\WaiverSubjectGroupImplementation;
 
 /**
  */
-trait WaiverSubjectRecord
+trait WaiverSubjectGroupRecord
 {
     use WaiverSubjectGroupImplementation;
 
@@ -18,7 +18,9 @@ trait WaiverSubjectRecord
         $collection = new Collection();
         foreach ($children as $child) {
             $waivers = $child->getWaivers();
-            $collection->push(...$waivers);
+            if ($waivers instanceof Collection) {
+                $collection->push(...$waivers->all());
+            }
         }
         return $collection;
     }

@@ -13,4 +13,6 @@ class WaiverSigner extends Record
 {
     use WaiverSignerTrait;
     use CommonRecordTrait;
+
+
 }

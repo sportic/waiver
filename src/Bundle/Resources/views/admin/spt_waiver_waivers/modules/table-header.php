@@ -6,7 +6,7 @@
     <th>
         <?= WaiverModels::waivers()->getLabel('subject.singular'); ?>
     </th>
-        <th>
+    <th>
         <?= WaiverModels::consents()->getLabel('title'); ?>
     </th>
     <th>

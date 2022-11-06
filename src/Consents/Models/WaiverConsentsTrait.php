@@ -19,6 +19,8 @@ trait WaiverConsentsTrait
     protected function initRelationsWaiver(): void
     {
         $this->initRelationsWaiverTemplate();
+        $this->initRelationsWaiverSigner();
+        $this->initRelationsWaiverDevice();
     }
 
     protected function generateTable(): string
@@ -26,4 +28,13 @@ trait WaiverConsentsTrait
         return PackageConfig::tableName(WaiverModels::CONSENTS, WaiverConsents::TABLE);
     }
 
+    protected function initRelationsWaiverSigner()
+    {
+        $this->belongsTo('WaiverSigner', ['class' => get_class(WaiverModels::signers()), 'fk' => 'signer_id']);
+    }
+
+    protected function initRelationsWaiverDevice()
+    {
+        $this->belongsTo('WaiverDevice', ['class' => get_class(WaiverModels::devices()), 'fk' => 'device_id']);
+    }
 }

@@ -4,6 +4,7 @@ namespace Sportic\Waiver\Bundle\Controllers\Admin;
 
 use Nip\Controllers\Response\ResponsePayload;
 use Nip\View\View;
+use Sportic\Waiver\Bundle\Library\View\ViewUtility;
 
 /**
  * @method ResponsePayload payload()
@@ -24,8 +25,6 @@ trait AbstractControllerTrait
     {
         parent::registerViewPaths($view);
 
-        $path = __DIR__ . '/../../Resources/views/admin';
-        $view->addPath($path);
-        $view->addPath($path, 'MarkticPromotion');
+        ViewUtility::registerViewPaths($view);
     }
 }

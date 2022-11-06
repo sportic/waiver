@@ -16,7 +16,7 @@ if ($item instanceof WaiverSubjectInterface || $item instanceof WaiverSubjectGro
 $card = Card::make()
     ->withTitle(WaiverModels::waivers()->getLabel('title'))
     ->withIcon(Icons::list_ul())
-    ->withContent($this->load('/spt_waiver_waivers/modules/list/subject', ['waivers' => $waivers], true))
+    ->withContent($this->load('/spt_waiver_waivers/modules/lists/subject', ['waivers' => $waivers], true))
     ->wrapBody(false);
 ?>
 <?= $card ?>

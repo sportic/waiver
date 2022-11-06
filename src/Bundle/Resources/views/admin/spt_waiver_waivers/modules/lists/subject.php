@@ -1,6 +1,7 @@
 <?php
 
 use ByTIC\Icons\Icons;
+use Sportic\Waiver\Utility\WaiverModels;
 use Sportic\Waiver\Waivers\Models\Waiver;
 
 /** @var Waiver[] $waivers */
@@ -11,16 +12,26 @@ $waivers = $waivers ?? $this->waivers;
     <thead>
     <tr>
         <th><?= translator()->trans('name') ?></th>
-        <th><?php echo 'signed' ?></th>
+        <th>
+            <?= WaiverModels::consents()->getLabel('title'); ?>
+        </th>
         <th><?php echo 'link' ?></th>
     </tr>
     </thead>
     <tbody>
     <?php foreach ($waivers as $waiver) { ?>
-        <?php $parentWaiver = $waiver->getParentRecord() ?>
+        <?php
+        $parentWaiver = $waiver->getParentRecord();
+        $consents = $waiver->getWaiverConsents();
+        ?>
         <tr>
             <td>
                 <?= $parentWaiver->getName(); ?>
+            </td>
+            <td>
+                <?php foreach ($consents as $consent) : ?>
+                    <?= $this->load('/spt_waiver_consents/modules/item/item-summary',['item' => $consent]); ?>
+                <?php endforeach; ?>
             </td>
             <td>
                 <small>

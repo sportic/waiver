@@ -15,7 +15,7 @@ trait WaiverSubjectRepository
     {
         $this->morphMany(
             'Waivers',
-            ['morphPrefix' => 'parent','class' => get_class(WaiverModels::waivers())]
+            ['morphPrefix' => 'parent', 'morphTypeField' => 'parent', 'class' => get_class(WaiverModels::waivers())]
         );
     }
 }
