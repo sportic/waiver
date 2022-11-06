@@ -25,7 +25,8 @@ final class WaiversConsentsTableCreate extends AbstractMigration
             ->addColumn('geolocation_id', 'integer', ['null' => true])
             ->addColumn('device_id', 'integer', ['null' => true])
             ->addColumn('signature_id', 'integer', ['null' => true])
-            ->addColumn('person_id', 'integer', ['null' => true])
+            ->addColumn('signer_id', 'integer', ['null' => true])
+            ->addColumn('signer_relation', 'enum', ['values' => ['personal', 'guardian'], 'default' => 'personal'])
             ->addColumn('type', 'enum', ['values' => ['checkbox', 'signed']])
             ->addColumn('given_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
@@ -35,7 +36,7 @@ final class WaiversConsentsTableCreate extends AbstractMigration
             ->addIndex(['geolocation_id'])
             ->addIndex(['device_id'])
             ->addIndex(['signature_id'])
-            ->addIndex(['person_id'])
+            ->addIndex(['signer_id'])
             ->save();
         $table
             ->addForeignKey(

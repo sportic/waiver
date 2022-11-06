@@ -8,14 +8,13 @@ use Sportic\Waiver\Base\Models\Behaviours\Timestampable\TimestampableManagerTrai
 use Sportic\Waiver\Utility\WaiverModels;
 use Sportic\Waiver\Utility\PackageConfig;
 
-use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordsTrait as HasTypesRecordsTrait;
 
 trait WaiverConsentsTrait
 {
     use HasTemplateRepositoryTrait;
     use TimestampableManagerTrait;
     use HasParentRepositoryTrait;
-    use HasTypesRecordsTrait;
+    use Traits\HasSmartProperties\HasSmartPropertiesRepository;
 
     protected function initRelationsWaiver(): void
     {
@@ -27,19 +26,4 @@ trait WaiverConsentsTrait
         return PackageConfig::tableName(WaiverModels::CONSENTS, WaiverConsents::TABLE);
     }
 
-    /**
-     * @return string
-     */
-    public function getTypesDirectory()
-    {
-        return dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Types';
-    }
-
-    /**
-     * @return string
-     */
-    public function getTypeNamespace()
-    {
-        return '\Sportic\Waiver\Consents\Models\Types\\';
-    }
 }
