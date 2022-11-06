@@ -2,6 +2,8 @@
 
 namespace Sportic\Waiver\Subjects;
 
+use Sportic\Waiver\SubjectGroups\WaiverSubjectGroupInterface;
+
 trait WaiverSubjectImplementation
 {
     public function isWaiverGroup(): bool
@@ -9,7 +11,7 @@ trait WaiverSubjectImplementation
         return false;
     }
 
-    public function getWaiverGroup(): mixed
+    public function getWaiverGroup(): ?WaiverSubjectGroupInterface
     {
         return null;
     }
