@@ -8,6 +8,11 @@ abstract class AbstractType extends Generic
 {
     public const NAME = null;
 
+    public function canBeCreated(): bool
+    {
+        return false;
+    }
+
     protected function generateName(): string
     {
         return static::NAME;

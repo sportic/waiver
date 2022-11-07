@@ -10,4 +10,5 @@ interface WaiverSubjectInterface
 
     public function getWaiverGroup(): ?WaiverSubjectGroupInterface;
 
+//    public function getWaivers();
 }

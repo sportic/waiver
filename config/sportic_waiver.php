@@ -36,4 +36,7 @@ return [
         'connection' => 'main',
         'migrations' => true,
     ],
+    'modules' => [
+        'frontend' => 'frontend',
+    ]
 ];

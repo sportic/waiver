@@ -39,4 +39,9 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
     {
         return static::instance()->get('database.migrations', false) !== false;
     }
+
+    public static function moduleFrontend(): string
+    {
+        return static::instance()->get('modules.frontend', 'frontend');
+    }
 }
