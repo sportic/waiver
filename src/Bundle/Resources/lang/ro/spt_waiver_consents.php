@@ -25,4 +25,6 @@ return [
          <p>Completand acest formular declar ca:<br />
             1) am citit si am inteles complet declaratia pe propria raspundere<br />
             2) sunt de accord cu termenii prezentati</p>',
+
+    'spt_waiver_consents.messages.delete' => 'Consimțămint șters',
 ];
