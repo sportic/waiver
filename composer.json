@@ -35,7 +35,8 @@
     "bytic/models-smart-properties": "^0.9|^1.0",
     "bytic/translation": "^0.9|^1.0",
     "bytic/form": "^0.9|^1.0",
-    "bytic/view": "^0.9|^1.0"
+    "bytic/view": "^0.9|^1.0",
+    "bytic/validator": "^0.9|^1.0"
   },
   "require-dev": {
     "bytic/admin-base": "^1.0",

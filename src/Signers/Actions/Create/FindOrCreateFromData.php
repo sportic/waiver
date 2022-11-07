@@ -3,6 +3,7 @@
 namespace Sportic\Waiver\Signers\Actions\Create;
 
 use Sportic\Waiver\Signers\Actions\Behaviours\HasRepository;
+use Sportic\Waiver\Signers\Models\WaiverSigner;
 use Sportic\Waiver\Utility\Hashing;
 
 class FindOrCreateFromData
@@ -23,6 +24,9 @@ class FindOrCreateFromData
         return $action;
     }
 
+    /**
+     * @return \Nip\Records\AbstractModels\Record|WaiverSigner
+     */
     public function save()
     {
         $data = $this->data;

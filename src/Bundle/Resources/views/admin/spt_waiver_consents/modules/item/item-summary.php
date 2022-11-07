@@ -6,20 +6,37 @@ use Sportic\Waiver\Utility\PackageConfig;
 
 /** @var WaiverConsent $item */
 $person = $item->getWaiverSigner();
+$signature = $item->getWaiverSignature();
 ?>
 <div class="bg-white my-1 p-2">
-    <div class="actions d-inline-block float-end">
-        <a href="<?= $item->compileURL('view', [], PackageConfig::moduleFrontend()) ?>" target="_blank" class="btn btn-xs btn-info btn-flat">
-            <?= Icons::globe() ?>
-        </a>
-        &nbsp;
-        <a href="#" data-href="<?= $item->compileURL('delete'); ?>"
-           data-message="<?= translator()->trans('general.messages.confirm'); ?>"
-           class="btn btn-xs btn-danger jsConfirm btn-flat">
-            <?= Icons::remove() ?>
-        </a>
+    <div class="d-flex">
+        <div class="flex-grow-1 ">
+            <?= $item->getType()->getLabelHTML(); ?>
+        </div>
+
+        <div class="actions">
+            <a href="<?= $item->compileURL('view', [], PackageConfig::moduleFrontend()) ?>" target="_blank"
+               class="btn btn-xs btn-info btn-flat">
+                <?= Icons::globe() ?>
+            </a>
+        </div>
     </div>
-    <?= $item->getType()->getLabelHTML(); ?>
+    <div class="d-flex">
+        <div class="date flex-grow-1">
+            <small class="opacity-50" style="font-size: 9px">
+                <strong>DATE:</strong>
+                <span class="fw-lighter"><?= $item->given_at; ?></span>
+            </small>
+        </div>
+        <div class="actions">
+            <a href="#" data-href="<?= $item->compileURL('delete'); ?>"
+               data-message="<?= translator()->trans('general.messages.confirm'); ?>"
+               class="btn btn-xs btn-danger jsConfirm btn-flat">
+                <?= Icons::remove() ?>
+            </a>
+        </div>
+    </div>
+
     <?php if ($person) : ?>
         <div class="my-1">
             <strong>
@@ -31,7 +48,12 @@ $person = $item->getWaiverSigner();
             </small>
         </div>
     <?php endif; ?>
-    <small class="d-block">
-        Date: <?= $item->given_at; ?>
-    </small>
+
+    <div class="bg-light bg-opacity-50 fst-italic p-1">
+        <div class="border-bottom">
+            <?php if ($signature) : ?>
+                <?= $signature->getSignature(); ?>
+            <?php endif; ?>
+        </div>
+    </div>
 </div>

@@ -14,4 +14,11 @@ trait WaiverSignatureTrait
     use RecordHasId;
     use TimestampableTrait;
     use HasTypesRecordTrait;
+
+    protected ?string $signature;
+
+    public function getSignature(): ?string
+    {
+        return $this->signature;
+    }
 }

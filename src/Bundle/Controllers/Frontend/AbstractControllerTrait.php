@@ -1,6 +1,6 @@
 <?php
 
-namespace Sportic\Waiver\Bundle\Controllers\Admin;
+namespace Sportic\Waiver\Bundle\Controllers\Frontend;
 
 use Nip\Controllers\Response\ResponsePayload;
 use Nip\View\View;
@@ -25,6 +25,6 @@ trait AbstractControllerTrait
     {
         parent::registerViewPaths($view);
 
-        ViewUtility::registerViewPaths($view, 'admin');
+        ViewUtility::registerViewPaths($view, 'frontend');
     }
 }

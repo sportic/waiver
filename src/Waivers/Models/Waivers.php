@@ -11,9 +11,9 @@ use Nip\Records\RecordManager;
  */
 class Waivers extends RecordManager
 {
-    use WaiversTrait;
-    use CommonRecordsTrait {
+    use WaiversTrait, CommonRecordsTrait {
         WaiversTrait::generateFilterManagerClass insteadof CommonRecordsTrait;
+        WaiversTrait::getFormClassName insteadof CommonRecordsTrait;
     }
 
     public const TABLE = 'spt_waiver_waivers';

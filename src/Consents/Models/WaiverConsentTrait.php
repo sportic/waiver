@@ -6,6 +6,7 @@ use Sportic\Waiver\Base\Models\Behaviours\HasId\RecordHasId;
 use Sportic\Waiver\Base\Models\Behaviours\HasTemplate\HasTemplateRecordTrait;
 use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordTrait as HasTypesRecordTrait;
 use Sportic\Waiver\Devices\Models\WaiverDevice;
+use Sportic\Waiver\Signatures\Models\WaiverSignature;
 use Sportic\Waiver\Signers\Models\WaiverSigner;
 use Sportic\Waiver\Waivers\Models\Waiver;
 
@@ -13,6 +14,7 @@ use Sportic\Waiver\Waivers\Models\Waiver;
  * Trait WaiverConsentTrait
  * @method Waiver getWaiver()
  * @method WaiverSigner getWaiverSigner()
+ * @method WaiverSignature getWaiverSignature()
  * @method WaiverDevice getWaiverDevice()
  */
 trait WaiverConsentTrait
