@@ -2,7 +2,7 @@
 
 namespace Sportic\Waiver\Base\Models\Behaviours\HasTemplate;
 
-use Sportic\Waiver\Waivers\Models\WaiverTemplate;
+use Sportic\Waiver\Templates\Models\WaiverTemplate;
 
 /**
  * @method WaiverTemplate getWaiverTemplate()

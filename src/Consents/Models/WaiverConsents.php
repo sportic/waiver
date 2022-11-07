@@ -18,4 +18,5 @@ class WaiverConsents extends RecordManager
     public const CONTROLLER = 'spt_waiver_consents';
 
 
+
 }

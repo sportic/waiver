@@ -11,14 +11,13 @@ use Sportic\Waiver\Utility\PackageConfig;
 
 trait WaiverConsentsTrait
 {
-    use HasTemplateRepositoryTrait;
     use TimestampableManagerTrait;
     use HasParentRepositoryTrait;
     use Traits\HasSmartProperties\HasSmartPropertiesRepository;
 
     protected function initRelationsWaiver(): void
     {
-        $this->initRelationsWaiverTemplate();
+        $this->initRelationsWaiverWaiver();
         $this->initRelationsWaiverSigner();
         $this->initRelationsWaiverDevice();
     }
@@ -26,6 +25,11 @@ trait WaiverConsentsTrait
     protected function generateTable(): string
     {
         return PackageConfig::tableName(WaiverModels::CONSENTS, WaiverConsents::TABLE);
+    }
+
+    public function initRelationsWaiverWaiver()
+    {
+        $this->belongsTo('Waiver', ['class' => get_class(WaiverModels::waivers()), 'fk' => 'waiver_id']);
     }
 
     protected function initRelationsWaiverSigner()

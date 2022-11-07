@@ -7,6 +7,7 @@ use Nip\Records\Record;
 use Sportic\Waiver\Templates\Actions\Find\FindTemplatesByParent;
 use Sportic\Waiver\Utility\WaiverModels;
 use Sportic\Waiver\Waivers\Models\Filters\TemplateFilter;
+use Sportic\Waiver\Waivers\Models\Waiver;
 
 trait SptWaiverWaiversControllerTrait
 {
@@ -49,4 +50,30 @@ trait SptWaiverWaiversControllerTrait
     {
         return get_class(WaiverModels::waivers());
     }
+
+    /**
+     * @param Waiver $item
+     */
+    protected function checkItemAccess($item)
+    {
+        parent:: checkItemAccess($item);
+
+        $this->checkWaiverParentRecordAccess($item->getParentRecord());
+
+        $template = $item->getWaiverTemplate();
+        $this->checkAndSetForeignModelInRequest($template);
+
+        $record = $template->getParentRecord();
+        $this->checkWaiverParentRecordAccess($record);
+    }
+
+    /**
+     * @param Record $record
+     * @return void
+     */
+    protected function checkWaiverParentRecordAccess($record)
+    {
+        $this->checkAndSetForeignModelInRequest($record);
+    }
+
 }
