@@ -4,7 +4,6 @@ namespace Sportic\Waiver\Bundle\Controllers\Admin;
 
 use Nip\Records\Record;
 use Sportic\Waiver\Consents\Models\WaiverConsent;
-use Sportic\Waiver\Waivers\Models\Waiver;
 
 trait SptWaiverConsentsControllerTrait
 {
@@ -17,6 +16,7 @@ trait SptWaiverConsentsControllerTrait
     protected function checkItemAccess($item)
     {
         parent:: checkItemAccess($item);
+        $this->setAfterUrl('after-delete', $item->getWaiver()->getParentRecord()->getURL());
 
         $waiver = $item->getWaiver();
         $this->checkAndSetForeignModelInRequest($waiver);

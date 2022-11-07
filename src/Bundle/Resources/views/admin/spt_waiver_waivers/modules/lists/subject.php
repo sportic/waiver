@@ -1,16 +1,21 @@
 <?php
 
 use ByTIC\Icons\Icons;
+use Nip\Records\Record;
 use Sportic\Waiver\Subjects\WaiverSubjectInterface;
+use Sportic\Waiver\Utility\PackageConfig;
 use Sportic\Waiver\Utility\WaiverModels;
+use Sportic\Waiver\Waivers\Actions\Url\CreateConsentUrl;
 use Sportic\Waiver\Waivers\Models\Waiver;
 
-/** @var \Nip\Records\Record $item */
+/** @var Record $item */
 if ($item instanceof WaiverSubjectInterface) {
     $waivers = $item->getWaivers();
 } else {
     $waivers = [];
 }
+
+$consentTypes = WaiverModels::consents()->getTypes();
 
 /** @var Waiver[] $waivers */
 ?>
@@ -28,15 +33,16 @@ if ($item instanceof WaiverSubjectInterface) {
                     WAIVER #<?= $waiver->getId(); ?>
                 </h6>
                 <div class="actions d-inline-block float-end">
-                    <a href="<?php echo $waiver->getSignatureURL() ?>" target="_blank" class="btn btn-xs btn-info btn-outline">
-                        <i class="fas fa-link"></i>
-                    </a>
-                    &nbsp;
-                    <a href="#" data-href="<?php echo $waiver->compileURL('delete'); ?>"
-                       data-message="<?php echo translator()->trans('general.messages.confirm'); ?>"
-                       class="btn btn-xs btn-danger btn-outline jsConfirm">
-                        <?= Icons::remove() ?>
-                    </a>
+                    <?php foreach ($consentTypes as $type): ?>
+                        <?php if ($type->canBeCreated()): ?>
+                            <a href="<?= CreateConsentUrl::for($waiver)->generate($type->getName()) ?>"
+                               target="_blank"
+                               class="btn btn-xs btn-<?= $type->getColorClass(); ?> btn-outline">
+                                <?= Icons::plus(); ?>
+                                <?= $type->getLabel(); ?>
+                            </a>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="row spt_consents">

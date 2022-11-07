@@ -3,12 +3,15 @@
 namespace Sportic\Waiver\Consents\Models;
 
 use Sportic\Waiver\Base\Models\Behaviours\HasParentRecord\HasParentRepositoryTrait;
-use Sportic\Waiver\Base\Models\Behaviours\HasTemplate\HasTemplateRepositoryTrait;
 use Sportic\Waiver\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
+use Sportic\Waiver\Consents\Models\Types\AbstractType;
 use Sportic\Waiver\Utility\WaiverModels;
 use Sportic\Waiver\Utility\PackageConfig;
 
 
+/**
+ * @method AbstractType[] getTypes
+ */
 trait WaiverConsentsTrait
 {
     use TimestampableManagerTrait;

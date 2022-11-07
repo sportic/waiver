@@ -10,8 +10,15 @@ class Hashing
     {
         return self::forString(serialize($data));
     }
+
     public static function forString($data): string
     {
         return hash(static::CRC32C, $data);
+    }
+
+    public static function secretToken($data): string
+    {
+        $data = is_string($data) ? $data : serialize($data);
+        return static::forString($data);
     }
 }
