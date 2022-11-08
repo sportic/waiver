@@ -2,7 +2,7 @@
 
 return [
     'spt_waiver_consents.labels.title' => 'Consimțăminte',
-    'waivers-entries_waivers.labels.title.form' => 'Consimțămint electronic',
+    'spt_waiver_consents.labels.title.form' => 'Consimțămint electronic',
 
     'spt_waiver_consents.statuses.checkbox' => 'Checkbox',
     'spt_waiver_consents.statuses.signed' => 'Semnat',
@@ -13,6 +13,8 @@ return [
     'spt_waiver_consents.labels.signed.btn' => 'Semnatura declaratie',
     'spt_waiver_consents.labels.signed.btn.short' => 'Semneaza',
     'spt_waiver_consents.labels.signed.signature.label' => 'Numele complet',
+
+    'spt_waiver_consents.messages.signed' => 'Semnatura electronica a fost salvată cu succes!',
 
     'spt_waiver_consents.messages.form.email.different' => 'Emailul introdus difera fata de cel atasat concurentului pentru care semnati declaratia',
     'spt_waiver_consents.messages.form.electronic_consent.notchecked' => 'Pentru procesarea semnaturii electronice trebuie să acceptati termeni detaliati <strong>bifand casuta de la finalul formularului</strong>',

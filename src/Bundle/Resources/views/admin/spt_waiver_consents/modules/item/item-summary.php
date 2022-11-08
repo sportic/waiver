@@ -1,8 +1,8 @@
 <?php
 
 use ByTIC\Icons\Icons;
+use Sportic\Waiver\Consents\Actions\Url\ViewConsentUrl;
 use Sportic\Waiver\Consents\Models\WaiverConsent;
-use Sportic\Waiver\Utility\PackageConfig;
 
 /** @var WaiverConsent $item */
 $person = $item->getWaiverSigner();
@@ -15,7 +15,7 @@ $signature = $item->getWaiverSignature();
         </div>
 
         <div class="actions">
-            <a href="<?= $item->compileURL('view', [], PackageConfig::moduleFrontend()) ?>" target="_blank"
+            <a href="<?= ViewConsentUrl::for($item)->generate(); ?>" target="_blank"
                class="btn btn-xs btn-info btn-flat">
                 <?= Icons::globe() ?>
             </a>

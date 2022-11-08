@@ -15,7 +15,7 @@ trait WaiverSignerTrait
     use RecordHasHash;
     use TimestampableTrait;
 
-    public function getFullName()
+    public function getFullName(): string
     {
         return $this->first_name . ' ' . $this->last_name;
     }

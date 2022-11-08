@@ -1,6 +1,6 @@
 <?php
 
-namespace Sportic\Waiver\Waivers\Actions;
+namespace Sportic\Waiver\Consents\Actions;
 
 class CreateSecretToken extends \Sportic\Waiver\Base\Actions\CreateSecretToken
 {
@@ -9,8 +9,7 @@ class CreateSecretToken extends \Sportic\Waiver\Base\Actions\CreateSecretToken
         return array_merge(
             parent::generateData(),
             [
-                'parent_id' => $this->record->parent_id,
-                'created' => $this->record->created_at,
+                'given_at' => $this->record->created_at,
             ]
         );
     }

@@ -35,7 +35,7 @@ $consentTypes = WaiverModels::consents()->getTypes();
                 <div class="actions d-inline-block float-end">
                     <?php foreach ($consentTypes as $type): ?>
                         <?php if ($type->canBeCreated()): ?>
-                            <a href="<?= CreateConsentUrl::for($waiver)->generate($type->getName()) ?>"
+                            <a href="<?= CreateConsentUrl::for($waiver)->generateFor($type->getName()) ?>"
                                target="_blank"
                                class="btn btn-xs btn-<?= $type->getColorClass(); ?> btn-outline">
                                 <?= Icons::plus(); ?>

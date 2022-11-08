@@ -22,6 +22,7 @@ trait WaiverConsentsTrait
     {
         $this->initRelationsWaiverWaiver();
         $this->initRelationsWaiverSigner();
+        $this->initRelationsWaiverContent();
         $this->initRelationsWaiverSignature();
         $this->initRelationsWaiverDevice();
     }
@@ -34,6 +35,11 @@ trait WaiverConsentsTrait
     public function initRelationsWaiverWaiver()
     {
         $this->belongsTo('Waiver', ['class' => get_class(WaiverModels::waivers()), 'fk' => 'waiver_id']);
+    }
+
+    public function initRelationsWaiverContent()
+    {
+        $this->belongsTo('WaiverContent', ['class' => get_class(WaiverModels::contents()), 'fk' => 'content_id']);
     }
 
     protected function initRelationsWaiverSigner()

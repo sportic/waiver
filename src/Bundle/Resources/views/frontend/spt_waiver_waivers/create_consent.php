@@ -19,9 +19,7 @@ $form = $this->form;
 
                 <?= $form->getRenderer()->renderMessages(); ?>
 
-                <div class="waiver-content font-monospace">
-                    <?= $this->waiverContent->getBody(); ?>
-                </div>
+                <?= $this->load('/spt_waiver_contents/modules/item/consent'); ?>
 
                 <?= $form->render(); ?>
             </div>

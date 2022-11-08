@@ -2,39 +2,28 @@
 
 namespace Sportic\Waiver\Waivers\Actions\Url;
 
-use Sportic\Waiver\Utility\PackageConfig;
+use Sportic\Waiver\Base\Actions\Behaviours\GeneratesRecordUrls;
 use Sportic\Waiver\Waivers\Actions\Behaviours\HasRepository;
 use Sportic\Waiver\Waivers\Actions\CreateSecretToken;
-use Sportic\Waiver\Waivers\Models\Waiver;
 
 class CreateConsentUrl
 {
     use HasRepository;
+    use GeneratesRecordUrls;
 
-    protected Waiver $waiver;
-
-    public static function for(Waiver $waiver)
+    public function __construct($repository = null)
     {
-        $action = new self();
-        $action->waiver = $waiver;
-        return $action;
+        $this->initRepository($repository);
+        $this->defaultAction = 'createConsent';
     }
 
-    public function generate($consentType)
+    public function generateFor($consentType)
     {
-        return $this->waiver->compileURL(
-            'createConsent',
-            $this->generateUrlParameters($consentType),
-            PackageConfig::moduleFrontend()
-        );
+        return $this->generate(null, ['consentType' => $consentType]);
     }
 
-    protected function generateUrlParameters($consentType): array
+    protected function generateUrlSecret(): string
     {
-        return [
-            'id' => $this->waiver->getId(),
-            'consentType' => $consentType,
-            'secret' => CreateSecretToken::for($this->waiver)->generate(),
-        ];
+        return CreateSecretToken::for($this->record)->generate();
     }
 }
