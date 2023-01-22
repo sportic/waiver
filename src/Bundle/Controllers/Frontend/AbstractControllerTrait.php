@@ -3,6 +3,7 @@
 namespace Sportic\Waiver\Bundle\Controllers\Frontend;
 
 use Nip\Controllers\Response\ResponsePayload;
+use Nip\Controllers\Traits\ErrorHandling;
 use Nip\View\View;
 use Sportic\Waiver\Bundle\Library\View\ViewUtility;
 
@@ -12,6 +13,7 @@ use Sportic\Waiver\Bundle\Library\View\ViewUtility;
 trait AbstractControllerTrait
 {
     use \Nip\Controllers\Traits\AbstractControllerTrait;
+    use ErrorHandling;
 
     public function getModelForm($model, $action = null)
     {

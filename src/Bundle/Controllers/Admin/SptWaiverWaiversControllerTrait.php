@@ -38,7 +38,7 @@ trait SptWaiverWaiversControllerTrait
         $this->doModelsListing();
     }
 
-    public function create()
+    public function createForSubject(): void
     {
         $subject = $this->checkForeignModelFromRequest(
             $this->getRequest()->get('parent_type'),

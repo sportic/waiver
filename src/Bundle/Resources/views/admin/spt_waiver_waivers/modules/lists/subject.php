@@ -4,14 +4,16 @@ use ByTIC\Icons\Icons;
 use Nip\Records\Record;
 use Sportic\Waiver\Subjects\WaiverSubjectInterface;
 use Sportic\Waiver\Utility\WaiverModels;
-use Sportic\Waiver\Waivers\Actions\Url\CreateConsentUrl;
+use Sportic\Waiver\Waivers\Actions\Url\RecordConsentUrl;
 use Sportic\Waiver\Waivers\Models\Waiver;
 
-/** @var Record $item */
-if ($item instanceof WaiverSubjectInterface) {
-    $waivers = $item->getWaivers();
-} else {
-    $waivers = [];
+if (!isset($waivers)) {
+    /** @var Record $item */
+    if ($item instanceof WaiverSubjectInterface) {
+        $waivers = $item->getWaivers();
+    } else {
+        $waivers = [];
+    }
 }
 
 $consentTypes = WaiverModels::consents()->getTypes();
@@ -22,15 +24,7 @@ $consentTypes = WaiverModels::consents()->getTypes();
 <div class="spt_waivers">
     <?php if (count($waivers) === 0) : ?>
         <div class="alert alert-info">
-            <?= WaiverModels::waivers()->getMessage(
-                'subject.dnx',
-                [
-                    'url' => WaiverModels::waivers()->compileUrl(
-                        'create',
-                        ['parent_id' => $item->id, 'parent_type' => $item->getManager()->getMorphName()],
-                    )
-                ]
-            ); ?>
+            <?= WaiverModels::waivers()->getMessage('subject.dnx'); ?>
         </div>
     <?php endif; ?>
     <?php foreach ($waivers as $waiver) { ?>
@@ -47,7 +41,7 @@ $consentTypes = WaiverModels::consents()->getTypes();
                 <div class="actions d-inline-block float-end">
                     <?php foreach ($consentTypes as $type): ?>
                         <?php if ($type->canBeCreated()): ?>
-                            <a href="<?= CreateConsentUrl::for($waiver)->generateFor($type->getName()) ?>"
+                            <a href="<?= RecordConsentUrl::for($waiver)->generateFor($type->getName()) ?>"
                                target="_blank"
                                class="btn btn-xs btn-<?= $type->getColorClass(); ?> btn-outline">
                                 <?= Icons::plus(); ?>

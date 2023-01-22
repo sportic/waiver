@@ -6,7 +6,7 @@ use Sportic\Waiver\Base\Actions\Behaviours\GeneratesRecordUrls;
 use Sportic\Waiver\Waivers\Actions\Behaviours\HasRepository;
 use Sportic\Waiver\Waivers\Actions\CreateSecretToken;
 
-class CreateConsentUrl
+class RecordConsentUrl
 {
     use HasRepository;
     use GeneratesRecordUrls;
@@ -14,7 +14,7 @@ class CreateConsentUrl
     public function __construct($repository = null)
     {
         $this->initRepository($repository);
-        $this->defaultAction = 'createConsent';
+        $this->defaultAction = 'recordConsent';
     }
 
     public function generateFor($consentType)

@@ -29,7 +29,7 @@ class CreateSecretToken
     protected function generateData(): array
     {
         return [
-            'id' => $this->record->getId(),
+            'id' => method_exists($this->record, 'getId') ? $this->record->getId() : $this->record->id,
         ];
     }
 }
