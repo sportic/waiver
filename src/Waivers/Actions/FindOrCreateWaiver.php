@@ -4,6 +4,8 @@ namespace Sportic\Waiver\Waivers\Actions;
 
 use Nip\Records\Record;
 use Sportic\Waiver\Base\Actions\Behaviours\HasDefaultReturn;
+use Sportic\Waiver\Subjects\WaiverSubjectInterface;
+use Sportic\Waiver\Templates\Actions\Find\FindTemplatesByParent;
 use Sportic\Waiver\Templates\Models\WaiverTemplate;
 use Sportic\Waiver\Waivers\Models\Waiver;
 
@@ -24,6 +26,17 @@ class FindOrCreateWaiver
         $instance->populateParent($parent, $parent_id);
 
         return $instance;
+    }
+
+    public static function forSubject(WaiverSubjectInterface $subject) {
+        $templateParent = $subject->getWaiverTemplateParent();
+
+        $template = FindTemplatesByParent::for($templateParent)
+            ->orCreate()
+            ->fetch();
+
+        //SAVE WAIVER
+        return self::for($template, $subject);
     }
 
     public function fetch(): Waiver|null

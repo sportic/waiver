@@ -2,6 +2,7 @@
 
 namespace Sportic\Waiver\Bundle\Controllers\Admin;
 
+use ByTIC\Controllers\Behaviors\Models\HasModelFinder;
 use Nip\Controllers\Response\ResponsePayload;
 use Nip\View\View;
 use Sportic\Waiver\Bundle\Library\View\ViewUtility;
@@ -12,6 +13,7 @@ use Sportic\Waiver\Bundle\Library\View\ViewUtility;
 trait AbstractControllerTrait
 {
     use \Nip\Controllers\Traits\AbstractControllerTrait;
+    use HasModelFinder;
 
     public function getModelForm($model, $action = null)
     {

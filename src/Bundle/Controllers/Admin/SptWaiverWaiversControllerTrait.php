@@ -6,6 +6,7 @@ use Nip\Records\Collections\Collection;
 use Nip\Records\Record;
 use Sportic\Waiver\Templates\Actions\Find\FindTemplatesByParent;
 use Sportic\Waiver\Utility\WaiverModels;
+use Sportic\Waiver\Waivers\Actions\FindOrCreateWaiver;
 use Sportic\Waiver\Waivers\Models\Filters\TemplateFilter;
 use Sportic\Waiver\Waivers\Models\Waiver;
 
@@ -35,6 +36,26 @@ trait SptWaiverWaiversControllerTrait
             TemplateFilter::encodeValue($parent, $parent_id)
         );
         $this->doModelsListing();
+    }
+
+    public function create()
+    {
+        $subject = $this->checkForeignModelFromRequest(
+            $this->getRequest()->get('parent_type'),
+            'parent_id'
+        );
+
+        //SAVE WAIVER
+        $waiver = FindOrCreateWaiver::forSubject($subject)
+            ->orCreate()
+            ->fetch();
+
+        $redirect = $this->getRequest()->server->get('HTTP_REFERER');
+        $this->flashRedirect(
+            $this->getModelManager()->getMessage('created'),
+            $redirect,
+            'success'
+            );
     }
 
     /**

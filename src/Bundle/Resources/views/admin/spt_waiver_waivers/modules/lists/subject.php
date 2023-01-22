@@ -3,7 +3,6 @@
 use ByTIC\Icons\Icons;
 use Nip\Records\Record;
 use Sportic\Waiver\Subjects\WaiverSubjectInterface;
-use Sportic\Waiver\Utility\PackageConfig;
 use Sportic\Waiver\Utility\WaiverModels;
 use Sportic\Waiver\Waivers\Actions\Url\CreateConsentUrl;
 use Sportic\Waiver\Waivers\Models\Waiver;
@@ -21,6 +20,19 @@ $consentTypes = WaiverModels::consents()->getTypes();
 ?>
 
 <div class="spt_waivers">
+    <?php if (count($waivers) === 0) : ?>
+        <div class="alert alert-info">
+            <?= WaiverModels::waivers()->getMessage(
+                'subject.dnx',
+                [
+                    'url' => WaiverModels::waivers()->compileUrl(
+                        'create',
+                        ['parent_id' => $item->id, 'parent_type' => $item->getManager()->getMorphName()],
+                    )
+                ]
+            ); ?>
+        </div>
+    <?php endif; ?>
     <?php foreach ($waivers as $waiver) { ?>
         <?php
         $templateWaiver = $waiver->getWaiverTemplate();

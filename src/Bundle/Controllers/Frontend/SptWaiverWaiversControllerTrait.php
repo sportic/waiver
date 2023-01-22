@@ -3,6 +3,7 @@
 namespace Sportic\Waiver\Bundle\Controllers\Frontend;
 
 use Sportic\Waiver\Bundle\Forms\Frontend\Waivers\CreateSignedForm;
+use Sportic\Waiver\Consents\Actions\Url\ViewConsentUrl;
 use Sportic\Waiver\Utility\WaiverModels;
 use Sportic\Waiver\Waivers\Actions\CreateSecretToken;
 use Sportic\Waiver\Waivers\Models\Waiver;
@@ -29,7 +30,7 @@ trait SptWaiverWaiversControllerTrait
         if ($form->execute()) {
             $this->flashRedirect(
                 $this->getModelManager()->getMessage('signed'),
-                $form->getWaiverConsent()->getURL()
+                ViewConsentUrl::for($form->getWaiverConsent())->generate(),
             );
         }
 

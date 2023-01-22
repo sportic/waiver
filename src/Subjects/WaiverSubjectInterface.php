@@ -10,6 +10,8 @@ interface WaiverSubjectInterface
 
     public function getWaiverGroup(): ?WaiverSubjectGroupInterface;
 
+    public function getWaiverTemplateParent(): ?object;
+
     public function getFirstName(): string;
 
     public function getLastName(): string;

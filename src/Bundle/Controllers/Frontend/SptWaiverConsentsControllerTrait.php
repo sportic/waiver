@@ -41,7 +41,7 @@ trait SptWaiverConsentsControllerTrait
      */
     protected function checkItemAccess($item)
     {
-        if (false == CreateSecretToken::for($item)->assertSame($this->getRequest()->get('secret'))) {
+        if (false == CreateSecretToken::for($item)->assertSame((string) $this->getRequest()->get('secret'))) {
             return false;
         }
         return parent::checkItemAccess($item);
