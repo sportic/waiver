@@ -17,7 +17,17 @@ trait SptWaiverWaiversControllerTrait
     {
         /** @var Waiver $item */
         $item = $this->getModelFromRequest();
+        $consents = $item->getWaiverConsents();
+
         $consentType = $this->getRequest()->get('consentType');
+        foreach ($consents as $consent) {
+            if ($consent->getType() == $consentType) {
+                $this->flashRedirect(
+                    $this->getModelManager()->getMessage('signed'),
+                    ViewConsentUrl::for($consent)->generate(),
+                );
+            }
+        }
 
         $consentTypeObject = WaiverModels::consents()->getType($consentType);
         $waiverTemplate = $item->getWaiverTemplate();

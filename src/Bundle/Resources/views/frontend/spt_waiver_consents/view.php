@@ -3,8 +3,7 @@
 use Sportic\Waiver\Utility\WaiverModels;
 
 ?>
-<div class="registration-form">
-
+<div class="registration-form py-6">
     <div class="row justify-content-center">
         <div class="col col-md-12 col-lg-10 col-xl-9 col-xxl-8">
             <h1 class="form-name">
@@ -19,7 +18,7 @@ use Sportic\Waiver\Utility\WaiverModels;
 
             <?= $this->load('/spt_waiver_contents/modules/item/content'); ?>
 
-            <div>
+            <div class="py-3">
                 <i class="far fa-check-square" style="float:left; font-size: 16px;margin-right: 15px"></i>
                 <?= WaiverModels::consents()->getMessage('signed.electronic-consent'); ?>
             </div>
