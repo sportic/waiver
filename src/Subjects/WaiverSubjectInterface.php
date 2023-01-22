@@ -10,5 +10,12 @@ interface WaiverSubjectInterface
 
     public function getWaiverGroup(): ?WaiverSubjectGroupInterface;
 
+    public function getFirstName(): string;
+
+    public function getLastName(): string;
+
+    public function getEmail(): string;
+
+    public function getDob(): string;
 //    public function getWaivers();
 }
