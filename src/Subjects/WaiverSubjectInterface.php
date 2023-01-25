@@ -12,12 +12,12 @@ interface WaiverSubjectInterface
 
     public function getWaiverTemplateParent(): ?object;
 
-    public function getFirstName(): string;
+    public function getFirstName(): ?string;
 
-    public function getLastName(): string;
+    public function getLastName(): ?string;
 
-    public function getEmail(): string;
+    public function getEmail(): ?string;
 
-    public function getDob(): string;
+    public function getDob(): ?string;
 //    public function getWaivers();
 }
