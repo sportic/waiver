@@ -24,9 +24,13 @@ $consents = $item->getWaiverConsents();
             :
             <br/>
         <?php endif; ?>
-        <a href="<?= $subject->getURL(); ?>">
-            <?= $subject->getName(); ?>
-        </a>
+        <?php if ($subjectParent) : ?>
+            <a href="<?= $subject->getURL(); ?>">
+                <?= $subject->getName(); ?>
+            </a>
+        <?php else : ?>
+            ---
+        <?php endif; ?>
     </td>
     <td>
         <?php foreach ($consents as $consent) : ?>
