@@ -13,11 +13,6 @@ class WaiverServiceProvider extends BaseBootableServiceProvider
 {
     public const NAME = 'sportic_waiver';
 
-    public function register()
-    {
-        parent::register();
-        $this->registerResources();
-    }
 
     public function migrations(): ?string
     {
@@ -27,40 +22,9 @@ class WaiverServiceProvider extends BaseBootableServiceProvider
 
         return null;
     }
-
-    protected function registerResources()
+    protected function translationsPath(): string
     {
-        if (false === $this->getContainer()->has('translator')) {
-            return;
-        }
-        $translator = $this->getContainer()->get('translator');
-        $folder = __DIR__ . '/Bundle/Resources/lang/';
-        $languages = $this->getContainer()->get('translation.languages');
-
-
-        foreach ($languages as $language) {
-            $path = $folder . $language;
-            if (is_dir($path)) {
-                $translator->addResource('php', $path, $language);
-            }
-        }
+        return __DIR__ . '/Bundle/Resources/lang/';
     }
 
-    protected function registerCommands()
-    {
-//        $this->commands(
-//        );
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function provides(): array
-    {
-        return array_merge(
-            [
-            ],
-            parent::provides()
-        );
-    }
 }

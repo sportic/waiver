@@ -26,7 +26,7 @@
     "php": "^8.0",
     "ext-json": "*",
     "bytic/package-base": "^1.0",
-    "bytic/migrations": "~0.12",
+    "bytic/migrations": "~0.13",
     "bytic/controllers": "^1.0|^2.0",
     "bytic/controllers-extra": "^1.0|^2.0",
     "bytic/orm": "^0.9|^1.0|^2.0",
@@ -40,8 +40,8 @@
   },
   "require-dev": {
     "bytic/admin-base": "^1.0",
-    "bytic/icons": "^1.0",
-    "bytic/event-dispatcher": "^0.9|^1.0",
+    "bytic/icons": "^1.0|^2.0",
+    "bytic/event-dispatcher": "^0.9|^1.0|^2.0",
     "bytic/phpqatools": "^1.0"
   },
   "minimum-stability": "dev",
