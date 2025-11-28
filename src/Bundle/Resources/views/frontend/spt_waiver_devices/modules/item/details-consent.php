@@ -4,7 +4,7 @@
 use Sportic\Waiver\Devices\Models\WaiverDevice;
 
 /** @var WaiverDevice $item */
-$item = $item ?? $this->waiverDevice;
+$item = $item && $item instanceof WaiverDevice ? $item : $this->waiverDevice;
 ?>
 <table class="table">
     <tr>

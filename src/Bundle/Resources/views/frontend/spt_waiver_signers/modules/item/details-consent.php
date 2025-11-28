@@ -3,7 +3,7 @@
 use Sportic\Waiver\Signers\Models\WaiverSigner;
 
 /** @var WaiverSigner $item */
-$item = $item ?? $this->waiverSigner;
+$item = $item && $item instanceof WaiverSigner ? $item : $this->waiverSigner;
 ?>
 <table class="table">
     <tr>

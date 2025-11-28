@@ -1,7 +1,9 @@
 <?php
 
-/** @var \Sportic\Waiver\Signatures\Models\WaiverSignature $item */
-$item = $item ?? $this->waiverSignature;
+use Sportic\Waiver\Signatures\Models\WaiverSignature;
+
+/** @var WaiverSignature $item */
+$item = $item && $item instanceof WaiverSignature ?$item : $this->waiverSignature;
 ?>
 <style>
     /* latin */
