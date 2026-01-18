@@ -17,11 +17,16 @@ class CreateWaiverForSubject
     {
         $this->initRepository($repository);
     }
-    public static function for(Record $subject, $consentType = null)
+    public static function for(Record $subject, $params = null, $module = null)
     {
         $action = new self();
         $action->subject = $subject;
-        return $action->generate(null, ['consentType' => $consentType]);
+        if (is_string($params)) {
+            $params = ['consentType' => $params];
+        } elseif ($params === null) {
+            $params = [];
+        }
+        return $action->generate(null, $params, $module);
     }
 
     public function generate($actionName = null, $params = [], $module = null)
