@@ -15,5 +15,5 @@ class WaiverConsents extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'spt_waiver_consents';
-    public const CONTROLLER = 'spt_waiver_consents';
+    public const CONTROLLER = 'spt_waiver-consents';
 }

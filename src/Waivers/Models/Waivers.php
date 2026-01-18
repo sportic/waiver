@@ -17,5 +17,5 @@ class Waivers extends RecordManager
     }
 
     public const TABLE = 'spt_waiver_waivers';
-    public const CONTROLLER = 'spt_waiver_waivers';
+    public const CONTROLLER = 'spt_waiver-waivers';
 }

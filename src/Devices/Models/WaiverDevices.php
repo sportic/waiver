@@ -15,5 +15,5 @@ class WaiverDevices extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'spt_waiver_devices';
-    public const CONTROLLER = 'spt_waiver_devices';
+    public const CONTROLLER = 'spt_waiver-devices';
 }

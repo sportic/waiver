@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'spt_waiver_waivers.labels.title' => 'Declaraţii concurenţi',
+    'spt_waiver-waivers.labels.title' => 'Declaraţii sportivi',
 
-    'spt_waiver_waivers.labels.subject.singular' => 'Waiver subject',
+    'spt_waiver-waivers.labels.subject.singular' => 'Waiver subject',
 ];

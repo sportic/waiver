@@ -15,6 +15,6 @@ class WaiverTemplates extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'spt_waiver_templates';
-    public const CONTROLLER = 'spt_waiver_templates';
+    public const CONTROLLER = 'spt_waiver-templates';
     public const RELATION_CONTENT_LAST = 'ContentLast';
 }

@@ -15,5 +15,5 @@ class WaiverSigners extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'spt_waiver_signers';
-    public const CONTROLLER = 'spt_waiver_signers';
+    public const CONTROLLER = 'spt_waiver-signers';
 }

@@ -15,5 +15,5 @@ class WaiverGeolocations extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'spt_waiver_geolocations';
-    public const CONTROLLER = 'spt_waiver_geolocations';
+    public const CONTROLLER = 'spt_waiver-geolocations';
 }
