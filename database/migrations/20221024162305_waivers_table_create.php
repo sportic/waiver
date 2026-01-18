@@ -20,10 +20,10 @@ final class WaiversTableCreate extends AbstractMigration
     {
         $table = $this->table('spt_waiver_waivers');
         $table
-            ->addColumn('template_id', 'integer',)
+            ->addColumn('template_id', 'integer',['signed' => false,])
             ->addColumn('parent_id', 'integer',)
             ->addColumn('parent', 'string',)
-            ->addColumn('content_id', 'integer',)
+            ->addColumn('content_id', 'integer',['signed' => false,])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',

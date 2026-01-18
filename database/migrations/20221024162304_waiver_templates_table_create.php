@@ -22,7 +22,7 @@ final class WaiverTemplatesTableCreate extends AbstractMigration
         $table
             ->addColumn('parent_id', 'integer',)
             ->addColumn('parent', 'string',)
-            ->addColumn('content_last_id', 'integer', ['null' => true])
+            ->addColumn('content_last_id', 'integer', ['null' => true, 'signed' => false])
             ->addColumn('status', 'enum', ['values' => ['active'], 'default' => 'active'])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',

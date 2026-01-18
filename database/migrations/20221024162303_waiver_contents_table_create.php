@@ -21,7 +21,7 @@ final class WaiverContentsTableCreate extends AbstractMigration
         $table = $this->table('spt_waiver_contents');
         $table
             ->addColumn('hash', 'string', ['limit' => 15])
-            ->addColumn('template_id', 'integer',)
+            ->addColumn('template_id', 'integer',['signed' => false])
             ->addColumn('body', 'text')
             ->addColumn('version', 'integer', ['limit' => \Phinx\Db\Adapter\MysqlAdapter::INT_TINY, 'default' => 1])
             ->addColumn('created_at', 'timestamp', [

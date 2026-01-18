@@ -20,12 +20,12 @@ final class WaiversConsentsTableCreate extends AbstractMigration
     {
         $table = $this->table('spt_waiver_consents');
         $table
-            ->addColumn('waiver_id', 'integer',)
-            ->addColumn('content_id', 'integer',)
+            ->addColumn('waiver_id', 'integer', ['signed' => false])
+            ->addColumn('content_id', 'integer', ['signed' => false])
             ->addColumn('geolocation_id', 'integer', ['null' => true])
-            ->addColumn('device_id', 'integer', ['null' => true])
-            ->addColumn('signature_id', 'integer', ['null' => true])
-            ->addColumn('signer_id', 'integer', ['null' => true])
+            ->addColumn('device_id', 'integer', ['null' => true, 'signed' => false])
+            ->addColumn('signature_id', 'integer', ['null' => true, 'signed' => false])
+            ->addColumn('signer_id', 'integer', ['null' => true, 'signed' => false])
             ->addColumn('signer_relation', 'enum', ['values' => ['personal', 'guardian'], 'default' => 'personal'])
             ->addColumn('type', 'enum', ['values' => ['checkbox', 'signed']])
             ->addColumn('given_at', 'timestamp', [
