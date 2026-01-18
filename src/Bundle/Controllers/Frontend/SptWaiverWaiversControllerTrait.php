@@ -36,7 +36,9 @@ trait SptWaiverWaiversControllerTrait
             ->orCreate()
             ->fetch();
 
-        $this->redirect(RecordConsentUrl::for($waiver)->generateFor($type));
+        $this->redirect(
+            RecordConsentUrl::for($waiver)->generateFor($type, $this->getRequest()->getModuleName())
+        );
     }
 
     public function recordConsent()
@@ -64,10 +66,7 @@ trait SptWaiverWaiversControllerTrait
         $form->setWaiverContent($waiverContent);
 
         if ($form->execute()) {
-            $this->flashRedirect(
-                $this->getModelManager()->getMessage('signed'),
-                ViewConsentUrl::for($form->getWaiverConsent())->generate(),
-            );
+            $this->recordConsentRedirect($form->getWaiverConsent());
         }
 
         $this->payload()->with(
@@ -80,6 +79,14 @@ trait SptWaiverWaiversControllerTrait
                 'waiverTemplateParent' => $waiverTemplate->getParentRecord(),
                 'form' => $form
             ]
+        );
+    }
+
+    protected function recordConsentRedirect($waiverConsent)
+    {
+        $this->flashRedirect(
+            $this->getModelManager()->getMessage('signed'),
+            ViewConsentUrl::for($waiverConsent)->generate(),
         );
     }
 

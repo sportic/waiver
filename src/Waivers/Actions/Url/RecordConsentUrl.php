@@ -17,9 +17,9 @@ class RecordConsentUrl
         $this->defaultAction = 'recordConsent';
     }
 
-    public function generateFor($consentType)
+    public function generateFor($consentType, $module = null): string
     {
-        return $this->generate(null, ['consentType' => $consentType]);
+        return $this->generate(null, ['consentType' => $consentType], $module);
     }
 
     protected function generateUrlSecret(): string
