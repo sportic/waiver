@@ -55,7 +55,7 @@ $consentTypes = WaiverModels::consents()->getTypes();
                 <?php foreach ($consents as $consent) : ?>
                     <div class="col">
                         <?= $this->load(
-                            '/spt_waiver_consents/modules/item/item-summary',
+                            '/spt_waiver-consents/modules/item/item-summary',
                             ['item' => $consent, 'subject' => $item]
                         ); ?>
                     </div>

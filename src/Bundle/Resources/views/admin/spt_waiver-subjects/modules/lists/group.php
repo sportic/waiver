@@ -39,7 +39,7 @@ if ($item instanceof WaiverSubjectInterface) {
             </div>
 
             <div class="m-2">
-                <?= $this->load('/spt_waiver_waivers/modules/lists/subject', ['item' => $subject, 'waivers' => $waivers]); ?>
+                <?= $this->load('/spt_waiver-waivers/modules/lists/subject', ['item' => $subject, 'waivers' => $waivers]); ?>
             </div>
         </div>
     <?php } ?>

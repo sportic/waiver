@@ -15,11 +15,11 @@ $form = $this->form;
                     <?= WaiverModels::consents()->getLabel('title.form'); ?>
                 </h1>
 
-                <?= $this->load('/spt_waiver_waivers/modules/item/details-consent'); ?>
+                <?= $this->load('/spt_waiver-waivers/modules/item/details-consent'); ?>
 
                 <?= $form->getRenderer()->renderMessages(); ?>
 
-                <?= $this->load('/spt_waiver_contents/modules/item/content'); ?>
+                <?= $this->load('/spt_waiver-contents/modules/item/content'); ?>
 
                 <?= $form->render(); ?>
             </div>

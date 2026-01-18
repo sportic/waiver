@@ -13,10 +13,10 @@ use Sportic\Waiver\Utility\WaiverModels;
             <?= $this->Messages()->info(WaiverModels::consents()->getMessage('signed')); ?>
 
             <div class="mb-6">
-                <?= $this->load('/spt_waiver_waivers/modules/item/details-consent'); ?>
+                <?= $this->load('/spt_waiver-waivers/modules/item/details-consent'); ?>
             </div>
 
-            <?= $this->load('/spt_waiver_contents/modules/item/content'); ?>
+            <?= $this->load('/spt_waiver-contents/modules/item/content'); ?>
 
             <div class="py-3">
                 <i class="far fa-check-square" style="float:left; font-size: 16px;margin-right: 15px"></i>
@@ -25,13 +25,13 @@ use Sportic\Waiver\Utility\WaiverModels;
 
             <div class="row">
                 <div class="col col-md-6">
-                    <?= $this->load('/spt_waiver_signatures/modules/item/view-consent'); ?>
-                    <?= $this->load('/spt_waiver_signers/modules/item/details-consent'); ?>
+                    <?= $this->load('/spt_waiver-signatures/modules/item/view-consent'); ?>
+                    <?= $this->load('/spt_waiver-signers/modules/item/details-consent'); ?>
                 </div>
 
                 <div class="col col-md-6">
-                    <?= $this->load('/spt_waiver_consents/modules/item/details'); ?>
-                    <?= $this->load('/spt_waiver_devices/modules/item/details-consent'); ?>
+                    <?= $this->load('/spt_waiver-consents/modules/item/details'); ?>
+                    <?= $this->load('/spt_waiver-devices/modules/item/details-consent'); ?>
                 </div>
             </div>
         </div>
