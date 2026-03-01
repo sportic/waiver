@@ -18,6 +18,7 @@ class RecordConsent
     protected WaiverContent $waiverContent;
 
     protected ?string $type = null;
+    protected ?string $signerRelation = null;
 
     protected ?WaiverSigner $signer = null;
     protected ?WaiverSignature $signature = null;
@@ -34,6 +35,12 @@ class RecordConsent
     public function withType(string $type = null): static
     {
         $this->type = $type;
+        return $this;
+    }
+
+    public function withSignerRelation(string $signerRelation = null): static
+    {
+        $this->signerRelation = $signerRelation;
         return $this;
     }
 
@@ -96,7 +103,8 @@ class RecordConsent
             'waiver_id' => $this->waiver->id,
             'signer_id' => $this->signer?->id,
             'signature_id' => $this->signature?->id,
-            'type' => $this->type
+            'type' => $this->type,
+            'signer_relation' => $this->signerRelation,
         ]);
     }
 

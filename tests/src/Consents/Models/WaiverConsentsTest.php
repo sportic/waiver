@@ -2,10 +2,10 @@
 
 namespace Sportic\Waiver\Tests\Consents\Models;
 
-use Sportic\Waiver\Consents\Models\SignerRelations\CoachSigner;
-use Sportic\Waiver\Consents\Models\SignerRelations\GroupLeaderSigner;
-use Sportic\Waiver\Consents\Models\SignerRelations\GuardianSigner;
-use Sportic\Waiver\Consents\Models\SignerRelations\PersonalSigner;
+use Sportic\Waiver\Consents\SignerRelations\CoachSigner;
+use Sportic\Waiver\Consents\SignerRelations\GroupLeaderSigner;
+use Sportic\Waiver\Consents\SignerRelations\GuardianSigner;
+use Sportic\Waiver\Consents\SignerRelations\PersonalSigner;
 use Sportic\Waiver\Consents\Models\Types\CheckboxConsent;
 use Sportic\Waiver\Consents\Models\Types\SignedConsent;
 use Sportic\Waiver\Consents\Models\WaiverConsents;

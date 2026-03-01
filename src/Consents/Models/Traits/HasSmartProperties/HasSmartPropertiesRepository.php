@@ -34,7 +34,7 @@ trait HasSmartPropertiesRepository
 
     public function getSignerRelationsItemsDirectory()
     {
-        return dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'SignerRelations';
+        return dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'SignerRelations';
     }
 
     /**
@@ -42,7 +42,7 @@ trait HasSmartPropertiesRepository
      */
     public function getSignerRelationNamespace()
     {
-        return '\Sportic\Waiver\Consents\Models\SignerRelations\\';
+        return '\Sportic\Waiver\Consents\SignerRelations\\';
     }
 
     public function getSignerRelations()

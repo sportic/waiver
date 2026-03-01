@@ -29,4 +29,11 @@ return [
             2) I agree with the presented terms</p>',
 
     'spt_waiver-consents.messages.delete' => 'Waiver deleted',
+
+    'spt_waiver-consents.labels.signer_relation' => 'Signing as',
+    'spt_waiver-consents.signer_relations.personal' => 'Participant (myself)',
+    'spt_waiver-consents.signer_relations.guardian' => 'Parent / Guardian of the participant',
+    'spt_waiver-consents.signer_relations.coach' => 'Coach / Teacher of the participant',
+    'spt_waiver-consents.signer_relations.group_leader' => 'Group Leader',
+    'spt_waiver-consents.messages.signer_info' => 'Please enter your own information below, not the participant\'s.',
 ];

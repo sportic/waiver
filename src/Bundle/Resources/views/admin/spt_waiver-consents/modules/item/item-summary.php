@@ -5,11 +5,13 @@ use Sportic\Waiver\Consents\Actions\Url\ViewConsentUrl;
 use Sportic\Waiver\Consents\Models\WaiverConsent;
 use Sportic\Waiver\Signers\Actions\Validation\ValidateFromSubject;
 use Sportic\Waiver\Subjects\WaiverSubjectInterface;
+use Sportic\Waiver\Utility\WaiverModels;
 
 /** @var WaiverSubjectInterface $subject */
 /** @var WaiverConsent $item */
 $person = $item->getWaiverSigner();
 $signature = $item->getWaiverSignature();
+$signerRelation = $item->getSignerRelation();
 
 $validConsent = true;
 if ($person) {
@@ -22,6 +24,11 @@ $classesError = 'px-1 border-bottom  border-2 border-danger';
     <div class="d-flex">
         <div class="flex-grow-1 ">
             <?= $item->getType()->getLabelHTML(); ?>
+            <?php if ($signerRelation) : ?>
+                <small class="opacity-75 ms-1">
+                    (<?= $signerRelation->getLabel() ?>)
+                </small>
+            <?php endif; ?>
             <small class="opacity-50" style="font-size: 9px">
                 <strong>DATE:</strong>
                 <span class="fw-lighter"><?= $item->given_at; ?></span>

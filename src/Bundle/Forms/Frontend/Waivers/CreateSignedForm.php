@@ -54,6 +54,8 @@ class CreateSignedForm extends AbstractForm
 
         $this->initializeTos();
 
+        $this->initializeSignerRelation();
+
         $this->addInput('email', translator()->trans('email'), true);
 
         $this->addInput('signature', $this->repositoryConsents->getLabel('signed.signature.label'), true);
@@ -125,6 +127,7 @@ class CreateSignedForm extends AbstractForm
             ->withRequest(request())
             ->withSigner($signer)
             ->withSignature($signature)
+            ->withSignerRelation($this->getElement('signer_relation')->getValue('model'))
             ->record($this->waiverContent, SignedConsent::NAME);
     }
 
@@ -138,6 +141,16 @@ class CreateSignedForm extends AbstractForm
         $tosElement->addOption('no', $this->repositoryConsents->getLabel('signed.no'));
         $tosElement->addOption('yes', $this->repositoryConsents->getLabel('signed.yes'));
         $tosElement->getRenderer()->setSeparator('');
+    }
+
+    protected function initializeSignerRelation()
+    {
+        $this->addSelect('signer_relation', $this->repositoryConsents->getLabel('signer_relation'), true);
+
+        $signerRelationElement = $this->getElement('signer_relation');
+        foreach ($this->repositoryConsents->getSignerRelations() as $signerRelation) {
+            $signerRelationElement->addOption($signerRelation->getName(), $signerRelation->getLabel());
+        }
     }
 
     protected function validateDob()

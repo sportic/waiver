@@ -21,6 +21,10 @@ $form = $this->form;
 
                 <?= $this->load('/spt_waiver-contents/modules/item/content'); ?>
 
+                <div class="alert alert-info">
+                    <?= WaiverModels::consents()->getMessage('signer_info'); ?>
+                </div>
+
                 <?= $form->render(); ?>
             </div>
         </div>
