@@ -5,6 +5,7 @@ namespace Sportic\Waiver\Consents\Models;
 use Sportic\Waiver\Base\Models\Behaviours\HasId\RecordHasId;
 use Sportic\Waiver\Base\Models\Behaviours\HasTemplate\HasTemplateRecordTrait;
 use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordTrait as HasTypesRecordTrait;
+use Sportic\Waiver\Consents\SignerRelations\AbstractType as SignerRelationAbstractType;
 use Sportic\Waiver\Contents\Models\WaiverContent;
 use Sportic\Waiver\Devices\Models\WaiverDevice;
 use Sportic\Waiver\Signatures\Models\WaiverSignature;
@@ -41,5 +42,15 @@ trait WaiverConsentTrait
         return $this->getManager()->getLabel('title.singular')
             . ' ' . $this->getType()->getLabel()
             . ' #' . md5($this->getId());
+    }
+
+    public function getSignerRelation(): ?SignerRelationAbstractType
+    {
+        $value = $this->signer_relation;
+        if (empty($value)) {
+            return null;
+        }
+        $signerRelations = $this->getManager()->getSignerRelations();
+        return $signerRelations[$value] ?? null;
     }
 }

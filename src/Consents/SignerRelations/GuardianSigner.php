@@ -1,13 +1,8 @@
 <?php
 
-namespace Sportic\Waiver\Consents\Models\SignerRelations;
+namespace Sportic\Waiver\Consents\SignerRelations;
 
-/**
- *
- */
 class GuardianSigner extends AbstractType
 {
     public const NAME = 'guardian';
-
-
 }

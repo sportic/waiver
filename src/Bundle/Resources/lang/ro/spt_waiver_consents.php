@@ -29,4 +29,11 @@ return [
             2) sunt de accord cu termenii prezentati</p>',
 
     'spt_waiver-consents.messages.delete' => 'Consimțămint șters',
+
+    'spt_waiver-consents.labels.signer_relation' => 'Semnat ca',
+    'spt_waiver-consents.signer_relations.personal' => 'Participant (eu)',
+    'spt_waiver-consents.signer_relations.guardian' => 'Parinte / Tutore al participantului',
+    'spt_waiver-consents.signer_relations.coach' => 'Antrenor / Profesor al participantului',
+    'spt_waiver-consents.signer_relations.group_leader' => 'Lider de grup',
+    'spt_waiver-consents.messages.signer_info' => 'Va rugam sa introduceti informatiile dvs., nu ale participantului.',
 ];
