@@ -2,6 +2,8 @@
 
 namespace Sportic\Waiver\Tests\Consents\Models;
 
+use Sportic\Waiver\Consents\Models\SignerRelations\CoachSigner;
+use Sportic\Waiver\Consents\Models\SignerRelations\GroupLeaderSigner;
 use Sportic\Waiver\Consents\Models\SignerRelations\GuardianSigner;
 use Sportic\Waiver\Consents\Models\SignerRelations\PersonalSigner;
 use Sportic\Waiver\Consents\Models\Types\CheckboxConsent;
@@ -29,9 +31,11 @@ class WaiverConsentsTest extends TestCase
         $types = $repository->getSignerRelations();
 
         self::assertIsArray($types);
-        self::assertCount(2, $types);
+        self::assertCount(4, $types);
 
         self::assertInstanceOf(GuardianSigner::class, $types[GuardianSigner::NAME]);
         self::assertInstanceOf(PersonalSigner::class, $types[PersonalSigner::NAME]);
+        self::assertInstanceOf(CoachSigner::class, $types[CoachSigner::NAME]);
+        self::assertInstanceOf(GroupLeaderSigner::class, $types[GroupLeaderSigner::NAME]);
     }
 }

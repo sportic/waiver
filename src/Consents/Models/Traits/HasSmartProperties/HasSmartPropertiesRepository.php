@@ -34,7 +34,7 @@ trait HasSmartPropertiesRepository
 
     public function getSignerRelationsItemsDirectory()
     {
-        return dirname(__FILE__) . DIRECTORY_SEPARATOR . 'SignerRelations';
+        return dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'SignerRelations';
     }
 
     /**
