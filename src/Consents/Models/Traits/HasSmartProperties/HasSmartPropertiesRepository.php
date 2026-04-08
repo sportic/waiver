@@ -3,6 +3,10 @@
 namespace Sportic\Waiver\Consents\Models\Traits\HasSmartProperties;
 
 use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordsTrait as HasTypesRecordsTrait;
+use Sportic\Waiver\Consents\SignerRelations\CoachSigner;
+use Sportic\Waiver\Consents\SignerRelations\GroupLeaderSigner;
+use Sportic\Waiver\Consents\SignerRelations\GuardianSigner;
+use Sportic\Waiver\Consents\SignerRelations\PersonalSigner;
 
 trait HasSmartPropertiesRepository
 {
@@ -46,6 +50,12 @@ trait HasSmartPropertiesRepository
 
     public function getSignerRelations()
     {
-        return $this->getSmartPropertyItems('SignerRelation');
+        $items = $this->getSmartPropertyItems('SignerRelation');
+        $return = [];
+        $return[PersonalSigner::NAME] = $items[PersonalSigner::NAME];
+        $return[GuardianSigner::NAME] = $items[GuardianSigner::NAME];
+        $return[CoachSigner::NAME] = $items[CoachSigner::NAME];
+        $return[GroupLeaderSigner::NAME] = $items[GroupLeaderSigner::NAME];
+        return $return;
     }
 }
