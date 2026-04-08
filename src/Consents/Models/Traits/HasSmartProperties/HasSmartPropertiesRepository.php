@@ -6,7 +6,6 @@ use ByTIC\Models\SmartProperties\RecordsTraits\HasTypes\RecordsTrait as HasTypes
 
 trait HasSmartPropertiesRepository
 {
-
     use HasTypesRecordsTrait;
 
     public function registerSmartProperties(): void
@@ -32,9 +31,9 @@ trait HasSmartPropertiesRepository
     }
 
 
-    public function getSignerRelationsItemsDirectory()
+    public function getSignerRelationItemsDirectory(): string
     {
-        return dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'SignerRelations';
+        return dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'SignerRelations';
     }
 
     /**

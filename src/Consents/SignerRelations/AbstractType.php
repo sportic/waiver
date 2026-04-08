@@ -2,7 +2,7 @@
 
 namespace Sportic\Waiver\Consents\SignerRelations;
 
-use ByTIC\Models\SmartProperties\Properties\Statuses\Generic;
+use ByTIC\Models\SmartProperties\Properties\Types\Generic;
 
 abstract class AbstractType extends Generic
 {
@@ -13,7 +13,7 @@ abstract class AbstractType extends Generic
         return static::NAME;
     }
 
-    public function getLabel(): string
+    public function getLabel($short = false): ?string
     {
         return translator()->trans('spt_waiver-consents.signer_relations.' . static::NAME);
     }

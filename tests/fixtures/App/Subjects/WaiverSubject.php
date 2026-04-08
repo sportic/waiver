@@ -8,4 +8,9 @@ use Sportic\Waiver\Subjects\WaiverSubjectInterface;
 class WaiverSubject implements WaiverSubjectInterface
 {
     use WaiverSubjectImplementation;
+
+    public function getWaiverTemplateParent(): ?object
+    {
+        // TODO: Implement getWaiverTemplateParent() method.
+    }
 }

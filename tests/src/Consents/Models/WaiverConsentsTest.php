@@ -29,7 +29,6 @@ class WaiverConsentsTest extends TestCase
     {
         $repository = new WaiverConsents();
         $types = $repository->getSignerRelations();
-
         self::assertIsArray($types);
         self::assertCount(4, $types);
 

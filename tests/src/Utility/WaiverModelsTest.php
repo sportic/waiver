@@ -3,6 +3,7 @@
 namespace Sportic\Waiver\Tests\Utility;
 
 use Nip\Records\Locator\ModelLocator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sportic\Waiver\Consents\Models\WaiverConsents;
 use Sportic\Waiver\Contents\Models\WaiverContents;
 use Sportic\Waiver\Devices\Models\WaiverDevices;
@@ -17,12 +18,13 @@ use Sportic\Waiver\Waivers\Models\Waivers;
 class WaiverModelsTest extends AbstractTest
 {
     /**
-     * @dataProvider data_repository_factories
      * @param $model
      * @param $class
      * @param $table
      * @return void
      */
+
+    #[DataProvider('data_repository_factories')]
     public function test_repository_factories($model, $class, $table)
     {
         $this->loadConfigFromFixture('basic');
@@ -33,7 +35,7 @@ class WaiverModelsTest extends AbstractTest
         self::assertSame($table, $repository->getTable());
     }
 
-    public function data_repository_factories()
+    public static function data_repository_factories()
     {
         return [
             [WaiverModels::TEMPLATES, WaiverTemplates::class, WaiverTemplates::TABLE],

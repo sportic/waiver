@@ -2,17 +2,12 @@
 
 namespace Sportic\Waiver\Tests\Utility;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Sportic\Waiver\Tests\AbstractTest;
 use Sportic\Waiver\Utility\Hashing;
 
 class HashingTest extends AbstractTest
 {
-    /**
-     * @dataProvider data_forString
-     * @param $string
-     * @param $expected
-     * @return void
-     */
     public function test_forArray(): void
     {
         self::assertSame(
@@ -21,18 +16,13 @@ class HashingTest extends AbstractTest
         );
     }
 
-    /**
-     * @dataProvider data_forString
-     * @param $string
-     * @param $expected
-     * @return void
-     */
+    #[DataProvider('data_forString')]
     public function test_forString($string, $expected): void
     {
         self::assertSame($expected, Hashing::forString($string));
     }
 
-    public function data_forString(): array
+    public static function data_forString(): array
     {
         return [
             ['', '00000000'],
